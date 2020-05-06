@@ -1,0 +1,1 @@
+Rails.application.config.session_store :cookie_store, key: "_covid19-tracker", domain: "placeholder-4-now.herokuapp.com"
