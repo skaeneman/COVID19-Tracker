@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  
+  include CurrentUserConcern
+
   def create
     # try to find the user via the form params then authenticate them
     user = User.find_by(email: params["user"]["email"])
