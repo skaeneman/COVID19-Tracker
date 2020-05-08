@@ -31,11 +31,17 @@ export default class Registration extends Component {
           password_confirmation: this.state.password_confirmation
         }
       },
-      { withCredentials: true } // sets cookie in the client
-      ).then(response => {
-         console.log("registration", response); // response returned back from Rails
+      { 
+        // sets cookie in the client
+        withCredentials: true 
+      }).then(response => {
+        // response returned back from Rails
+         console.log("registration", response); 
+         if (response.data.status === 'created') {
+           this.props.handleSuccessfulAuth(response.data); 
+         }
       }).catch(error => {
-        console.log("registration error", error);
+        console.log("registration error:", error);
       })
       event.preventDefault();
     }
