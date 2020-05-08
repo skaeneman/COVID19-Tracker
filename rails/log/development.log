@@ -87,3 +87,127 @@ Processing by StaticController#home as HTML
 Completed 200 OK in 8ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 354)
 
 
+Started POST "/registrations" for ::1 at 2020-05-07 21:42:37 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"kaeneman@bu.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"kaeneman@bu.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[36mUser Exists? (4.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kaeneman@bu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+Completed 422 Unprocessable Entity in 238ms (ActiveRecord: 18.1ms | Allocations: 14437)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: First name can't be blank, Last name can't be blank):
+  
+app/controllers/registrations_controller.rb:4:in `create'
+Started POST "/registrations" for ::1 at 2020-05-07 21:46:09 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"kasseneman@bu.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"kasseneman@bu.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kasseneman@bu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+Completed 422 Unprocessable Entity in 201ms (ActiveRecord: 0.5ms | Allocations: 4431)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: First name can't be blank, Last name can't be blank):
+  
+app/controllers/registrations_controller.rb:4:in `create'
+Started POST "/registrations" for ::1 at 2020-05-07 21:46:35 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"skaeneman@yahoo.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"email"=>"skaeneman@yahoo.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "skaeneman@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+Completed 422 Unprocessable Entity in 197ms (ActiveRecord: 0.4ms | Allocations: 4352)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: First name can't be blank, Last name can't be blank):
+  
+app/controllers/registrations_controller.rb:4:in `create'
+Started POST "/registrations" for ::1 at 2020-05-07 21:54:46 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"first_name"=>"scott", "last_name"=>"kaeneman", "email"=>"kaeneman@bu.edu", "phone"=>"6172347865", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"first_name"=>"scott", "last_name"=>"kaeneman", "email"=>"kaeneman@bu.edu", "phone"=>"6172347865", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kaeneman@bu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[36mUser Create (5.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "phone", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "scott"], ["last_name", "kaeneman"], ["email", "kaeneman@bu.edu"], ["phone", "6172347865"], ["password_digest", "$2a$12$wliCRW32YqjMvUKxDSfU3u1Fyt566NagiwYtIXzpHlg77jJHVQODu"], ["created_at", "2020-05-08 01:54:46.740052"], ["updated_at", "2020-05-08 01:54:46.740052"]]
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+Completed 200 OK in 201ms (Views: 0.3ms | ActiveRecord: 6.6ms | Allocations: 4211)
+
+
+Started POST "/registrations" for ::1 at 2020-05-07 21:59:42 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"first_name"=>"scott", "last_name"=>"kaeneman", "email"=>"kaeneman@bu.edu", "phone"=>"6172347865", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"first_name"=>"scott", "last_name"=>"kaeneman", "email"=>"kaeneman@bu.edu", "phone"=>"6172347865", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kaeneman@bu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+Completed 422 Unprocessable Entity in 205ms (ActiveRecord: 0.5ms | Allocations: 4051)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Email has already been taken):
+  
+app/controllers/registrations_controller.rb:4:in `create'
+Started POST "/registrations" for ::1 at 2020-05-07 22:10:00 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"first_name"=>"scott", "last_name"=>"kaeneman", "email"=>"skaeneman@yahoo.com", "phone"=>"6176814220", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"first_name"=>"scott", "last_name"=>"kaeneman", "email"=>"skaeneman@yahoo.com", "phone"=>"6176814220", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "skaeneman@yahoo.com"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+Completed 422 Unprocessable Entity in 197ms (ActiveRecord: 1.0ms | Allocations: 4174)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Password confirmation doesn't match Password):
+  
+app/controllers/registrations_controller.rb:4:in `create'
+Started POST "/registrations" for ::1 at 2020-05-07 22:38:07 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"first_name"=>"test", "last_name"=>"smith", "email"=>"test@test.com", "phone"=>"61765278545", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"first_name"=>"test", "last_name"=>"smith", "email"=>"test@test.com", "phone"=>"61765278545", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "email", "phone", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "test"], ["last_name", "smith"], ["email", "test@test.com"], ["phone", "61765278545"], ["password_digest", "$2a$12$pt3LzADBBcNI.wvNfBRCBOyRn/iySxvto7eola2OXmqpx5Mxmfg.O"], ["created_at", "2020-05-08 02:38:07.994585"], ["updated_at", "2020-05-08 02:38:07.994585"]]
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+Completed 200 OK in 198ms (Views: 0.3ms | ActiveRecord: 2.0ms | Allocations: 4179)
+
+
+Started POST "/registrations" for ::1 at 2020-05-07 22:38:17 -0400
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"first_name"=>"test", "last_name"=>"smith", "email"=>"test@test.com", "phone"=>"61765278545", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "registration"=>{"user"=>{"first_name"=>"test", "last_name"=>"smith", "email"=>"test@test.com", "phone"=>"61765278545", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/registrations_controller.rb:4:in `create'
+Completed 422 Unprocessable Entity in 195ms (ActiveRecord: 0.6ms | Allocations: 3950)
+
+
+  
+ActiveRecord::RecordInvalid (Validation failed: Email has already been taken):
+  
+app/controllers/registrations_controller.rb:4:in `create'
