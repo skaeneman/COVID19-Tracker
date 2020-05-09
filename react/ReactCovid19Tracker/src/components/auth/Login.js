@@ -8,7 +8,7 @@ export default class Login extends Component {
       this.state = {
         email: "",
         password: "",
-        registrationErrors: ""          
+        loginErrors: ""          
       };
 
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,9 +30,9 @@ export default class Login extends Component {
       }).then(response => {
         // response returned back from Rails
          console.log("login", response); 
-        //  if (response.data.status === 'created') {
-        //    this.props.handleSuccessfulAuth(response.data); 
-        //  }
+         if (response.data.logged_in === true) {
+           this.props.handleSuccessfulAuth(response.data); 
+         }
       }).catch(error => {
         console.log("login error:", error);
       })
