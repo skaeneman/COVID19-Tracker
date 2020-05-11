@@ -3,7 +3,9 @@ import Registration from './auth/Registration'
 import Login from './auth/Login';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 export default class Home extends Component {
   constructor(props) {
@@ -30,15 +32,23 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div className="d-flex flex-wrap justify-content-center position-absolute w-100 h-50 align-items-center align-content-center">
-         <Jumbotron>
-          <h1>Home Page</h1>
-          <h1>Status: {this.props.loggedInStatus}</h1>    
-          <Button className="btn btn-danger" onClick={() => this.handleLogoutClick()}>logout</Button>
-          <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
-          <h1>Login</h1>
-          <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
-        </Jumbotron>
+      <div>
+        <Container>
+          <Row>
+            <Col>
+              <h1>Home Page</h1>
+              <h1>Status: {this.props.loggedInStatus}</h1>    
+              <Button variant="danger" onClick={() => this.handleLogoutClick()}>logout</Button>
+              <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <h1>Login</h1>
+              <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
+            </Col>
+          </Row>
+        </Container>
       </div>
     )
   }

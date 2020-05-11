@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
 
 export default class Registration extends Component {
     constructor(props) {
@@ -57,7 +60,7 @@ export default class Registration extends Component {
 
     render() {
         return (
-            <div>
+          <div>     
               <form onSubmit={this.handleSubmit}>
                 <input
                   type="first_name" 
