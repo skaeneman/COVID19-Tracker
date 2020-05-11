@@ -14,7 +14,9 @@ export default class App extends Component {
       user: {}
     }
 
+    // allows you to pass a function as a prop
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   checkLoginStatus() {
@@ -42,6 +44,13 @@ export default class App extends Component {
     this.checkLoginStatus();
   }
 
+  handleLogout() {
+    this.setState({
+      loggedInStatus: "NOT_LOGGED_IN",
+      user: {}
+    });
+  }
+
   handleLogin(data) {
     this.setState({
       loggedInStatus: "LOGGED_IN",
@@ -61,7 +70,7 @@ export default class App extends Component {
                 <Home
                   {...props}
                   handleLogin={this.handleLogin}
-                  // handleLogout={this.handleLogout}
+                  handleLogout={this.handleLogout}
                   loggedInStatus={this.state.loggedInStatus}
                 />
               )}
