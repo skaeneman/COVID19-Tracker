@@ -150,14 +150,6 @@ export default class Registration extends Component {
   function FormExample() {
     const [validated, setValidated] = useState(false);
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [passwordConfirmation, setPasswordConfirmation] = useState('');
-
-
     const handleSubmit = (event) => {
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
@@ -165,7 +157,6 @@ export default class Registration extends Component {
         event.stopPropagation();
       }
       console.log("form", form);
-      console.log("firstName", firstName);
 
       setValidated(true);
     };
@@ -181,8 +172,8 @@ export default class Registration extends Component {
               type="first_name" 
               name="first_name" 
               placeholder="First name" 
-              value={firstName} 
-              onChange={e => setFirstName(e.target.value)}
+              value={value} 
+              onChange={e => setValue(e.target.value)}
               required 
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
