@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Registration from './auth/Registration'
 import Login from './auth/Login';
+import Navigation from './Navigation';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -34,6 +35,7 @@ export default class Home extends Component {
     return (
       <div>
         <Container>
+          <Navigation />
           <Row>
             <Col>
               <h1>Home Page</h1>

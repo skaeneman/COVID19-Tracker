@@ -5,18 +5,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 
-export default class Registration extends Component {
 
-    render() {
-      return (
-        <RegistrationForm />
-      );
-    }
-
-  }
-  
-
-  function RegistrationForm() {
+  function Registration () {
     const [validated, setValidated] = useState(false);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -177,6 +167,8 @@ export default class Registration extends Component {
     );
   }
   
+  // render(<Registration />);
+  export default Registration;
 
 
 
