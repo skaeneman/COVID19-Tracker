@@ -4,152 +4,20 @@ import { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
-import InputGroup from 'react-bootstrap/InputGroup';
 
 export default class Registration extends Component {
 
-    constructor(props) {
-      super(props);
-      
-      this.state = {
-        first_name: "",
-        last_name: "",
-        email: "",
-        phone: "",
-        password: "",
-        password_confirmation: "",
-        registrationErrors: ""  
-      };
-
-      // this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleChange = this.handleChange.bind(this);
-
-    }    
-
-    // // send form data to the Rails API backend via a POST
-    // handleSubmit(event) {
-    //   axios.post("http://localhost:3001/registrations", {
-    //     user: {
-    //       first_name: this.state.first_name,
-    //       last_name: this.state.last_name,
-    //       email: this.state.email,
-    //       phone: this.state.phone,
-    //       password: this.state.password,
-    //       password_confirmation: this.state.password_confirmation
-    //     }
-    //   },
-    //   { 
-    //     // sets cookie in the client
-    //     withCredentials: true 
-    //   }).then(response => {
-    //     // response returned back from Rails
-    //      console.log("registration", response); 
-    //      if (response.data.status === 'created') {
-    //        this.props.handleSuccessfulAuth(response.data); 
-    //      }
-    //   }).catch(error => {
-    //     console.log("registration error:", error);
-    //   })
-    //   event.preventDefault();
-    // }
-
-    // triggered when a user types something in an input field
-    handleChange(event) {
-      const {name, value} = event.target;
-      this.setState({
-        // display the value that was typed in the input field
-        [name]: value
-      });
-    }
-
-
     render() {
       return (
-        <FormExample />
+        <RegistrationForm />
       );
     }
-
-    // render() {
-    //     return (
-    //       <Form noValidate validated={this.validated} onSubmit={this.handleSubmit}>
-    //         <Form.Row>
-    //           <Form.Group as={Col} md="4" controlId="validationCustom01">
-    //           <Form.Label>First name</Form.Label>
-    //             <Form.Control
-    //               type="first_name" 
-    //               name="first_name" 
-    //               placeholder="First name" 
-    //               value={this.state.first_name} 
-    //               onChange={this.handleChange}
-    //               required 
-    //             />
-    //             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-    //           </Form.Group>
-    //           <Button type="submit">Submit form</Button>
-    //         </Form.Row>
-    //       </Form>
-
-
-    //       // <div>     
-    //       //     <form onSubmit={this.handleSubmit}>
-
-
-    //       //       <input
-    //       //         type="last_name" 
-    //       //         name="last_name" 
-    //       //         placeholder="Last name" 
-    //       //         value={this.state.last_name} 
-    //       //         onChange={this.handleChange}
-    //       //         required 
-    //       //       />                
-
-    //       //       <input
-    //       //         type="email" 
-    //       //         name="email" 
-    //       //         placeholder="Email" 
-    //       //         value={this.state.email} 
-    //       //         onChange={this.handleChange}
-    //       //         required 
-    //       //       />
-
-    //       //       <input
-    //       //         type="phone" 
-    //       //         name="phone" 
-    //       //         placeholder="Phone" 
-    //       //         value={this.state.phone} 
-    //       //         onChange={this.handleChange}                   
-    //       //       />                
-
-    //       //       <input
-    //       //         type="password" 
-    //       //         name="password" 
-    //       //         placeholder="Password" 
-    //       //         value={this.state.password} 
-    //       //         onChange={this.handleChange}
-    //       //         required 
-    //       //       />
-
-    //       //       <input
-    //       //         type="password" 
-    //       //         name="password_confirmation" 
-    //       //         placeholder="Password confirmation" 
-    //       //         value={this.state.password_confirmation} 
-    //       //         onChange={this.handleChange}
-    //       //         required 
-    //       //       />              
-
-    //       //       <button type="submit">register</button>                  
-    //       //     </form>
-    //       //   </div>
-    //     )
-    // }
 
   }
   
 
-  function FormExample() {
+  function RegistrationForm() {
     const [validated, setValidated] = useState(false);
-
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [phone, setPhone] = useState('');
@@ -157,21 +25,45 @@ export default class Registration extends Component {
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
 
-
+    // handle the form submission by checking validations and calling the Rails API
     const handleSubmit = (event) => {
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
       }
-      console.log("form", form);
-      console.log("firstName", firstName);
-
       setValidated(true);
+
+      // only do a POST to the server once the form values are correct
+      if (form.checkValidity()) {
+        // send form data to the Rails API backend
+        axios.post("http://localhost:3001/registrations", {
+          user: {
+            first_name: firstName,
+            last_name: lastName,
+            email: email,
+            phone: phone,
+            password: password,
+            password_confirmation: passwordConfirmation
+          }
+        },
+        { 
+          // sets cookie in the client
+          withCredentials: true 
+        }).then(response => {
+          // the response back from the Rails server
+          console.log("registration", response); 
+          if (response.data.status === 'created') {
+            this.props.handleSuccessfulAuth(response.data); 
+          }
+        }).catch(error => {
+          console.log("registration error:", error);
+        })
+        event.preventDefault();
+      }
     };
 
-
-  
+    // form data
     return (
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Row>
@@ -261,7 +153,7 @@ export default class Registration extends Component {
             <Form.Control
               required
               type="password" 
-              name="password_confirmation" 
+              name="passwordConfirmation" 
               placeholder="Password confirmation" 
               value={passwordConfirmation} 
               onChange={e => setPasswordConfirmation(e.target.value)} 
