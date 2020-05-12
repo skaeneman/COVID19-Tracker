@@ -44,7 +44,6 @@ export default class Home extends Component {
           </Row>
           <Row>
             <Col>
-              <h1>Login</h1>
               <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
             </Col>
           </Row>

@@ -3,7 +3,6 @@ import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import Col from 'react-bootstrap/Col';
 
 export default class Login extends Component {
     constructor(props) {
@@ -54,8 +53,8 @@ export default class Login extends Component {
 
     render() {
         return (
-            <div className="d-flex flex-wrap justify-content-center position-absolute w-100 h-50 align-items-center align-content-center">
               <Jumbotron>
+                <h1>Login</h1>
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -87,7 +86,6 @@ export default class Login extends Component {
                   </Button>
                 </Form>
               </Jumbotron> 
-            </div>
         )
     }
 }
