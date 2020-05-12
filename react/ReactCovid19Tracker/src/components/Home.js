@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import StateSearch from './search/StateSearch';
 
 export default class Home extends Component {
   constructor(props) {
@@ -34,8 +35,9 @@ export default class Home extends Component {
   render() {
     return (
       <div>
+        <Navigation />
         <Container>
-          <Navigation />
+        <StateSearch />
           <Row>
             <Col>
               <h1>Home Page</h1>
