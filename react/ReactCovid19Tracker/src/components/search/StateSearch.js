@@ -1,12 +1,7 @@
 import React, { useState } from 'react'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
-
-const options = [
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
+import statesJSON from '../../helpers/states'; 
 
 // uses the 'react-select' package
 export default function StateSearch() {
@@ -21,13 +16,14 @@ export default function StateSearch() {
   return (
     <div>
       <Select 
-        options={options}
+        options={statesJSON}
         placeholder="Select a State"
         onChange={setAmericanState}
         noOptionsMessage={() => 'Uh-oh nothing matches your search'}
         className=""
         components={makeAnimated()}
         isSearchable
+        isClearable={true}
       />
     </div>
   )

@@ -34,3 +34,4 @@ yarn-debug.log*
 
 # ignore node modules
 node_modules
+log
