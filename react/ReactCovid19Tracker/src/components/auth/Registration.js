@@ -175,69 +175,103 @@ export default class Registration extends Component {
     return (
       <Form noValidate validated={validated} onSubmit={handleSubmit}>
         <Form.Row>
-          <Form.Group as={Col} md="4" controlId="validationCustom01">
+          <Form.Group as={Col} md="8" controlId="validationCustom01">
             <Form.Label>First name</Form.Label>
             <Form.Control
+              required
               type="first_name" 
               name="first_name" 
               placeholder="First name" 
               value={firstName} 
-              onChange={e => setFirstName(e.target.value)}
-              required 
+              onChange={e => setFirstName(e.target.value)}               
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} md="4" controlId="validationCustom02">
+        </Form.Row>
+
+        <Form.Row>
+          <Form.Group as={Col} md="8" controlId="validationCustom02">
             <Form.Label>Last name</Form.Label>
             <Form.Control
               required
-              type="text"
-              placeholder="Last name"
-              defaultValue="Otto"
+              type="last_name" 
+              name="last_name" 
+              placeholder="Last name" 
+              value={lastName} 
+              onChange={e => setLastName(e.target.value)}
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
-          <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-            <Form.Label>Username</Form.Label>
-            <InputGroup>
-              <InputGroup.Prepend>
-                <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-              </InputGroup.Prepend>
+        </Form.Row>
+
+        <Form.Row>
+          <Form.Group as={Col} md="8" controlId="validationCustomEmail">
+            <Form.Label>Email</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Username"
-                aria-describedby="inputGroupPrepend"
-                required
+                required 
+                type="email" 
+                name="email" 
+                placeholder="Email" 
+                value={email} 
+                onChange={e => setEmail(e.target.value)}
               />
               <Form.Control.Feedback type="invalid">
-                Please choose a username.
+                Please enter your email address.
               </Form.Control.Feedback>
-            </InputGroup>
           </Form.Group>
         </Form.Row>
+
         <Form.Row>
-          <Form.Group as={Col} md="6" controlId="validationCustom03">
-            <Form.Label>City</Form.Label>
-            <Form.Control type="text" placeholder="City" required />
+          <Form.Group as={Col} md="8" controlId="validationCustom03">
+            <Form.Label>Phone</Form.Label>
+            <Form.Control
+              // required
+              type="phone" 
+              name="phone" 
+              placeholder="Phone" 
+              value={phone} 
+              onChange={e => setPhone(e.target.value)} 
+             />
             <Form.Control.Feedback type="invalid">
-              Please provide a valid city.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom04">
-            <Form.Label>State</Form.Label>
-            <Form.Control type="text" placeholder="State" required />
-            <Form.Control.Feedback type="invalid">
-              Please provide a valid state.
-            </Form.Control.Feedback>
-          </Form.Group>
-          <Form.Group as={Col} md="3" controlId="validationCustom05">
-            <Form.Label>Zip</Form.Label>
-            <Form.Control type="text" placeholder="Zip" required />
-            <Form.Control.Feedback type="invalid">
-              Please provide a valid zip.
+              Please provide a valid phone number.
             </Form.Control.Feedback>
           </Form.Group>
         </Form.Row>
+
+        <Form.Row>
+          <Form.Group as={Col} md="8" controlId="validationCustom04">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              required
+              type="password" 
+              name="password" 
+              placeholder="Password" 
+              value={password} 
+              onChange={e => setPassword(e.target.value)} 
+             />
+            <Form.Control.Feedback type="invalid">
+              Please provide a valid password.
+            </Form.Control.Feedback>
+          </Form.Group>
+        </Form.Row>
+
+        <Form.Row>
+          <Form.Group as={Col} md="8" controlId="validationCustom05">
+            <Form.Label>Password confirmation</Form.Label>
+            <Form.Control
+              required
+              type="password" 
+              name="password_confirmation" 
+              placeholder="Password confirmation" 
+              value={passwordConfirmation} 
+              onChange={e => setPasswordConfirmation(e.target.value)} 
+             />
+            <Form.Control.Feedback type="invalid">
+              Please provide a valid password confirmation.
+            </Form.Control.Feedback>
+          </Form.Group>
+        </Form.Row>        
+
         <Form.Group>
           <Form.Check
             required
@@ -245,7 +279,8 @@ export default class Registration extends Component {
             feedback="You must agree before submitting."
           />
         </Form.Group>
-        <Button type="submit">Submit form</Button>
+
+        <Button type="submit">Submit</Button>
       </Form>
     );
   }
