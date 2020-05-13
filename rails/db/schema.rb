@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_233206) do
+ActiveRecord::Schema.define(version: 2020_05_13_003651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "state_policies", force: :cascade do |t|
+    t.string "state_name"
+    t.date "state_of_emergency"
+    t.date "k_12_schools_closed"
+    t.date "shelter_in_place_start"
+    t.date "shelter_in_place_end"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
