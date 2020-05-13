@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
-  resources :state_policies
+  
+  get 'state_policies/get_state_policy', to: 'state_policies#get_state_policy', defaults: { format: 'json' }
+  resources :state_policies, defaults: { format: 'json' }
   
   delete :logout, to: "sessions#logout"
   get :logged_in, to: "sessions#logged_in"

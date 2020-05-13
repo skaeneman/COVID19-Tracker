@@ -1,5 +1,5 @@
 class StatePoliciesController < ApplicationController
-  before_action :set_state_policy, only: [:show, :edit, :update, :destroy]
+  before_action :set_state_policy, only: [:edit, :update, :destroy]
 
   # # GET /state_policies
   # # GET /state_policies.json
@@ -7,10 +7,24 @@ class StatePoliciesController < ApplicationController
   #   @state_policies = StatePolicy.all
   # end
 
-  # # GET /state_policies/1
-  # # GET /state_policies/1.json
+  # GET /state_policies/1
+  # GET /state_policies/1.json
   # def show
   # end
+
+  
+  def get_state_policy
+    @state_policy = StatePolicy.find_by(state_name: params[:state])
+
+    # render json: @state_policy.as_json(only: %i(id state_name))
+    respond_to do |format|
+      if @state_policy
+        format.json { render :json => @state_policy, status: 200 }
+      else
+        format.json { render json: "No data available for #{params[:state]}" }
+      end
+    end
+  end
 
   # # GET /state_policies/new
   # def new
@@ -23,17 +37,17 @@ class StatePoliciesController < ApplicationController
 
   # POST /state_policies
   # POST /state_policies.json
-  def create
-    @state_policy = StatePolicy.new(state_policy_params)
+  # def create
+  #   @state_policy = StatePolicy.new(state_policy_params)
 
-    respond_to do |format|
-      if @state_policy.save
-        format.json { render :show, status: :created, location: @state_policy }
-      else
-        format.json { render json: @state_policy.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @state_policy.save
+  #       format.json { render :show, status: :created, location: @state_policy }
+  #     else
+  #       format.json { render json: @state_policy.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # # PATCH/PUT /state_policies/1
   # # PATCH/PUT /state_policies/1.json
