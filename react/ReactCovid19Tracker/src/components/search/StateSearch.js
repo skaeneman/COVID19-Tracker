@@ -10,7 +10,7 @@ export default function StateSearch() {
 
     // if a state was selected from the dropdown
     if (americanState) {
-      console.log("state to pass to Rails: ", americanState.value);
+      // console.log("state to pass to Rails: ", americanState.value);
 
       axios.get("http://localhost:3001/state_policies/get_state_policy", {
         params: {
@@ -18,10 +18,10 @@ export default function StateSearch() {
         }
       }).then(response => {
         // the response back from the Rails server
+
         console.log("state policy: ", response); 
 
         if (response.status === 200) {
-          console.log("wooo-hooo"); 
           console.log(response.data.state_name); 
         }
       }).catch(error => {
@@ -30,6 +30,7 @@ export default function StateSearch() {
       event.preventDefault();
     }    
 
+  // the dropdown select box for states.
   return (
     <div>
       <Select 
