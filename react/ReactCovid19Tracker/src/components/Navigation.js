@@ -13,6 +13,12 @@ import Dashboard from './Dashboard';
 
 export default class Navigation extends Component {
   render() {
+
+    console.log("nav props.....", this.props);
+    console.log("nav logged in?", this.props.isLoggedIn);
+
+
+
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand href="/">COVID-19 Legislation Tracker</Navbar.Brand>
@@ -29,8 +35,12 @@ export default class Navigation extends Component {
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Nav>
-            <Nav.Link href="/login">Login</Nav.Link>
+          <Nav> 
+
+            { this.props.isLoggedIn === "NOT_LOGGED_IN" ?
+                <Nav.Link href="/login">Login</Nav.Link> : <Nav.Link href="/logout">Logout</Nav.Link>
+            }      
+          
             <Nav.Link eventKey={2} href="#signup">
               Sign Up
             </Nav.Link>

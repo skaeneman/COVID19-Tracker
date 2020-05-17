@@ -14,16 +14,11 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
+    console.log("is logged in constructor? ", this.props.loggedInStatus);
+
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
   
-  handleSuccessfulAuth(data) {
-    console.log("handleSuccessfulAuth Home.js......", this.props);
-    this.props.handleLogin(data);
-    this.props.history.push("/dashboard");
-  }
-
   handleLogoutClick() {
     // deletes the session
     axios.delete("http://localhost:3001/logout", { withCredentials: true })
@@ -37,7 +32,8 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <Navigation />
+         {/* create the isLoggedIn prop and pass it to the Navigation componenet */}
+        <Navigation isLoggedIn={this.props.loggedInStatus} />
         <Container>
         <StateSearch />
           <Row>
@@ -46,11 +42,6 @@ export default class Home extends Component {
               <h1>Status: {this.props.loggedInStatus}</h1>    
               <Button variant="danger" onClick={() => this.handleLogoutClick()}>logout</Button>
               <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Login handleSuccessfulAuth={this.handleSuccessfulAuth} />
             </Col>
           </Row>
         </Container>

@@ -20,27 +20,14 @@ export default class LoginPage extends Component {
   }
   
   handleSuccessfulAuth(data) {
-    console.log("inside handleSuccessfulAuth in LoginPage.js........", data);
-    console.log("this.props ", this.props);
-    console.log("this.state ", this.state);
-
-
-    // this.setState({
-    //   loggedInStatus: "LOGGED_IN",
-    //   user: data.user
-    // });
-    
-
-    // this.props.loggedInStatus = "LOGGED_IN";
-
-    // this.props.handleLogin(data);
+    this.props.handleLogin(data);
     this.props.history.push("/");
   }
   
   render() {
     return (
       <div>
-        <Navigation />
+        <Navigation isLoggedIn={this.props.loggedInStatus} />
         <Container>
           <Row>
             <Col>

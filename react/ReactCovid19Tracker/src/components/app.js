@@ -72,7 +72,6 @@ export default class App extends Component {
               render={props => (
                 <Home
                   {...props}
-                  handleLogin={this.handleLogin}
                   handleLogout={this.handleLogout}
                   loggedInStatus={this.state.loggedInStatus}
                 />
@@ -94,6 +93,8 @@ export default class App extends Component {
               render={props => (
                 <LoginPage
                   {...props}
+                  handleLogin={this.handleLogin}
+                  handleLogout={this.handleLogout}
                   loggedInStatus={this.state.loggedInStatus}
                 />
               )}
