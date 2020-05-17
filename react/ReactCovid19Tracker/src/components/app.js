@@ -18,6 +18,7 @@ export default class App extends Component {
     // allows you to pass a function as a prop
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
 
   checkLoginStatus() {
@@ -45,6 +46,16 @@ export default class App extends Component {
     this.checkLoginStatus();
   }
 
+  handleLogoutClick() {
+    // deletes the session
+    axios.delete("http://localhost:3001/logout", { withCredentials: true })
+    .then(response => {
+      this.handleLogout(); // set state in react to logged out
+    }).catch(error => {
+      console.log("error logging out:", error);
+    })
+  }
+ 
   handleLogout() {
     this.setState({
       loggedInStatus: "NOT_LOGGED_IN",
@@ -73,6 +84,7 @@ export default class App extends Component {
                 <Home
                   {...props}
                   handleLogout={this.handleLogout}
+                  handleLogoutClick={this.handleLogoutClick}
                   loggedInStatus={this.state.loggedInStatus}
                 />
               )}
@@ -95,6 +107,7 @@ export default class App extends Component {
                   {...props}
                   handleLogin={this.handleLogin}
                   handleLogout={this.handleLogout}
+                  handleLogoutClick={this.handleLogoutClick}
                   loggedInStatus={this.state.loggedInStatus}
                 />
               )}

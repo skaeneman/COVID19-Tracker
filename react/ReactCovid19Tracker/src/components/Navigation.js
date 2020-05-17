@@ -13,10 +13,7 @@ import Dashboard from './Dashboard';
 
 export default class Navigation extends Component {
   render() {
-
-    console.log("nav props.....", this.props);
-    console.log("nav logged in?", this.props.isLoggedIn);
-
+    console.log("nav props...", this.props);
 
 
     return (
@@ -35,16 +32,16 @@ export default class Navigation extends Component {
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-          <Nav> 
-
-            { this.props.isLoggedIn === "NOT_LOGGED_IN" ?
-                <Nav.Link href="/login">Login</Nav.Link> : <Nav.Link href="/logout">Logout</Nav.Link>
-            }      
-          
-            <Nav.Link eventKey={2} href="#signup">
-              Sign Up
-            </Nav.Link>
-          </Nav>
+          { this.props.isLoggedIn === "NOT_LOGGED_IN" ?
+            <Nav> 
+              <Nav.Link href="/login">Login</Nav.Link> 
+              <Nav.Link eventKey={2} href="#signup">Sign Up </Nav.Link> 
+            </Nav> 
+          : 
+            <Nav> 
+              <Nav.Link onClick={() => this.props.handleLogoutClick()}>Logout</Nav.Link>
+            </Nav> 
+          }               
         </Navbar.Collapse>
       </Navbar>
     )

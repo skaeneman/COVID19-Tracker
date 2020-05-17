@@ -13,34 +13,20 @@ import Footer from './Footer';
 export default class Home extends Component {
   constructor(props) {
     super(props);
-
-    console.log("is logged in constructor? ", this.props.loggedInStatus);
-
-    this.handleLogoutClick = this.handleLogoutClick.bind(this);
   }
   
-  handleLogoutClick() {
-    // deletes the session
-    axios.delete("http://localhost:3001/logout", { withCredentials: true })
-    .then(response => {
-      this.props.handleLogout(); // set state in react to logged out
-    }).catch(error => {
-      console.log("error logging out:", error);
-    })
-  }
-
   render() {
     return (
       <div>
          {/* create the isLoggedIn prop and pass it to the Navigation componenet */}
-        <Navigation isLoggedIn={this.props.loggedInStatus} />
+        <Navigation isLoggedIn={this.props.loggedInStatus} handleLogoutClick={this.props.handleLogoutClick} handleLogout={this.props.handleLogout} />
         <Container>
         <StateSearch />
           <Row>
             <Col>
               <h1>Home Page</h1>
               <h1>Status: {this.props.loggedInStatus}</h1>    
-              <Button variant="danger" onClick={() => this.handleLogoutClick()}>logout</Button>
+              {/* <Button variant="danger" onClick={() => this.handleLogoutClick()}>logout</Button> */}
               <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
             </Col>
           </Row>
