@@ -9,28 +9,29 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import StateSearch from './search/StateSearch';
 import Footer from './Footer';
+import Home from './Home';
 
-export default class Home extends Component {
+
+export default class RegistrationPage extends Component {
   constructor(props) {
     super(props);
+
+    this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
+  }
+  
+  handleSuccessfulAuth(data) {
+    this.props.handleLogin(data);
+    this.props.history.push("/");
   }
   
   render() {
     return (
       <div>
-         {/* create the isLoggedIn prop and pass it to the Navigation componenet */}
-        <Navigation 
-          isLoggedIn={this.props.loggedInStatus} 
-          handleLogoutClick={this.props.handleLogoutClick} 
-          handleLogout={this.props.handleLogout} />
+        <Navigation isLoggedIn={this.props.loggedInStatus} />
         <Container>
-        <StateSearch />
           <Row>
             <Col>
-              <h1>Home Page</h1>
-              <h1>Status: {this.props.loggedInStatus}</h1>    
-              {/* <Button variant="danger" onClick={() => this.handleLogoutClick()}>logout</Button> */}
-              {/* <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} /> */}
+              <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} />
             </Col>
           </Row>
         </Container>

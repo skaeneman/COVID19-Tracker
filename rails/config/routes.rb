@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   get :logged_in, to: "sessions#logged_in"
 
   get :login, to: "static#login"
+  get :signup, to: "static#signup"
+
   root to: "static#home"
 end

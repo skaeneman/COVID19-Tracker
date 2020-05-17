@@ -4,6 +4,7 @@ import axios from 'axios';
 import Home from './Home';
 import Dashboard from './Dashboard';
 import LoginPage from './LoginPage';
+import RegistrationPage from './RegistrationPage';
 
 export default class App extends Component {
 
@@ -64,8 +65,6 @@ export default class App extends Component {
   }
 
   handleLogin(data) {
-    console.log("inside handleLogin in app.js........", data);
-
     this.setState({
       loggedInStatus: "LOGGED_IN",
       user: data.user
@@ -111,7 +110,20 @@ export default class App extends Component {
                   loggedInStatus={this.state.loggedInStatus}
                 />
               )}
-            />            
+            />     
+            <Route
+              exact
+              path={"/signup"}
+              render={props => (
+                <RegistrationPage
+                  {...props}
+                  handleLogin={this.handleLogin}
+                  handleLogout={this.handleLogout}
+                  handleLogoutClick={this.handleLogoutClick}
+                  loggedInStatus={this.state.loggedInStatus}
+                />
+              )}
+            />                    
           </Switch>
         </BrowserRouter>
       </div>

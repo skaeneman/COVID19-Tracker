@@ -35,7 +35,7 @@ export default class Navigation extends Component {
           { this.props.isLoggedIn === "NOT_LOGGED_IN" ?
             <Nav> 
               <Nav.Link href="/login">Login</Nav.Link> 
-              <Nav.Link eventKey={2} href="#signup">Sign Up </Nav.Link> 
+              <Nav.Link eventKey={2} href="/signup">Sign Up </Nav.Link> 
             </Nav> 
           : 
             <Nav> 

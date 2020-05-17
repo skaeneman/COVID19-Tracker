@@ -5,7 +5,11 @@ class StaticController < ApplicationController
   end
 
   def login
-    render json: { status: "everything is working" }
+    render json: { status: "login..." }
+  end
+
+  def signup
+    render json: { status: "signup..." }
   end
 
 end
