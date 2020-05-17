@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import axios from 'axios';
 import Home from './Home';
 import Dashboard from './Dashboard';
-import axios from 'axios';
+import LoginPage from './LoginPage';
 
 export default class App extends Component {
 
@@ -52,6 +53,8 @@ export default class App extends Component {
   }
 
   handleLogin(data) {
+    console.log("inside handleLogin in app.js........", data);
+
     this.setState({
       loggedInStatus: "LOGGED_IN",
       user: data.user
@@ -85,6 +88,16 @@ export default class App extends Component {
                 />
               )}
             />
+            <Route
+              exact
+              path={"/login"}
+              render={props => (
+                <LoginPage
+                  {...props}
+                  loggedInStatus={this.state.loggedInStatus}
+                />
+              )}
+            />            
           </Switch>
         </BrowserRouter>
       </div>

@@ -5,12 +5,17 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
+import NavLink from 'react-bootstrap/NavLink';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import Home from './Home';
+import Dashboard from './Dashboard';
+
 
 export default class Navigation extends Component {
   render() {
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <Navbar.Brand href="#home">COVID-19 Legislation Tracker</Navbar.Brand>
+        <Navbar.Brand href="/">COVID-19 Legislation Tracker</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
@@ -25,7 +30,7 @@ export default class Navigation extends Component {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="#login">Login</Nav.Link>
+            <Nav.Link href="/login">Login</Nav.Link>
             <Nav.Link eventKey={2} href="#signup">
               Sign Up
             </Nav.Link>

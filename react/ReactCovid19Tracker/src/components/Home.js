@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import StateSearch from './search/StateSearch';
+import Footer from './Footer';
 
 export default class Home extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ export default class Home extends Component {
   }
   
   handleSuccessfulAuth(data) {
+    console.log("handleSuccessfulAuth Home.js......", this.props);
     this.props.handleLogin(data);
     this.props.history.push("/dashboard");
   }
@@ -52,6 +54,7 @@ export default class Home extends Component {
             </Col>
           </Row>
         </Container>
+        <Footer />
       </div>
     )
   }
