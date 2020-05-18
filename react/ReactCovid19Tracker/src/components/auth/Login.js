@@ -32,8 +32,8 @@ export default class Login extends Component {
         withCredentials: true 
       }).then(response => {
         // response returned back from Rails
-         console.log("logged in:", response); 
-         if (response.data.logged_in === true) {         
+         if (response.data.logged_in === true) {       
+           console.log("logged in:", response);   
            this.props.handleSuccessfulAuth(response.data); 
          }
       }).catch(error => {

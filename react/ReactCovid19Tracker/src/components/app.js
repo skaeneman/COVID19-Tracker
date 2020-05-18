@@ -20,6 +20,7 @@ export default class App extends Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    // this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this);
   }
 
   checkLoginStatus() {
@@ -70,6 +71,12 @@ export default class App extends Component {
       user: data.user
     });
   }
+
+  // handleSuccessfulAuth(data) {
+  //   console.log("inside app.js handleSuccessfulAuth...")
+  //   this.handleLogin(data);
+  //   this.props.history.push("/");
+  // }  
 
   render() {
     return (

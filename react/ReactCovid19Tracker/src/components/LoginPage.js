@@ -27,7 +27,9 @@ export default class LoginPage extends Component {
   render() {
     return (
       <div>
-        <Navigation isLoggedIn={this.props.loggedInStatus} />
+        <Navigation 
+          isLoggedIn={this.props.loggedInStatus} 
+        />
         <Container>
           <Row>
             <Col>

@@ -20,14 +20,24 @@ export default class RegistrationPage extends Component {
   }
   
   handleSuccessfulAuth(data) {
+    console.log("Reg Page handleSuccessfulAuth...");
     this.props.handleLogin(data);
+    console.log("data...", data);
+    // this.props.data
     this.props.history.push("/");
   }
   
   render() {
+    console.log("Reg Page props...", this.props);
+
     return (
       <div>
-        <Navigation isLoggedIn={this.props.loggedInStatus} />
+        <Navigation 
+          isLoggedIn={this.props.loggedInStatus} 
+          handleLogoutClick={this.props.handleLogoutClick} 
+          handleLogout={this.props.handleLogout} 
+          handleSuccessfulAuth={this.handleSuccessfulAuth}
+        />
         <Container>
           <Row>
             <Col>

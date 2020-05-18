@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 
+  function Registration (props) {
 
-  function Registration () {
     const [validated, setValidated] = useState(false);
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -42,9 +42,9 @@ import Col from 'react-bootstrap/Col';
           withCredentials: true 
         }).then(response => {
           // the response back from the Rails server
-          console.log("registration", response); 
           if (response.data.status === 'created') {
-            this.props.handleSuccessfulAuth(response.data); 
+            // call props not this.props because we pass props into the main Registration function
+            props.handleSuccessfulAuth(response.data)
           }
         }).catch(error => {
           console.log("registration error:", error);

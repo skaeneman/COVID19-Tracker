@@ -14,15 +14,22 @@ export default class Home extends Component {
   constructor(props) {
     super(props);
   }
+
   
   render() {
+    console.log('home props ', this.props);
+    console.log('home props user ', this.props.user);
+
+
     return (
       <div>
          {/* create the isLoggedIn prop and pass it to the Navigation componenet */}
         <Navigation 
           isLoggedIn={this.props.loggedInStatus} 
+          user={this.props.user}
           handleLogoutClick={this.props.handleLogoutClick} 
-          handleLogout={this.props.handleLogout} />
+          handleLogout={this.props.handleLogout} 
+        />
         <Container>
         <StateSearch />
           <Row>
