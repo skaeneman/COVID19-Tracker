@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'babel-polyfill';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 import Home from './Home';

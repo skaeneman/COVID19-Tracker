@@ -9,17 +9,27 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import StateSearch from './search/StateSearch';
 import Footer from './Footer';
+import { fetchData } from '../api/';
+import InfectedCard from './cards/InfectedCard';
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      apiData: {}
+    }
   }
 
-  
-  render() {
-    console.log('home props ', this.props);
-    console.log('home props user ', this.props.user);
+  async componentDidMount() {
+    // gets the COVID-19 data from an external API call
+    const covidApiData = await fetchData();
+    // console.log(covidApiData);
+    this.setState({ apiData: covidApiData });
+  }
 
+  render() {
+    const { apiData } = this.state;
 
     return (
       <div>
@@ -38,6 +48,11 @@ export default class Home extends Component {
               <h1>Status: {this.props.loggedInStatus}</h1>    
               {/* <Button variant="danger" onClick={() => this.handleLogoutClick()}>logout</Button> */}
               {/* <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} /> */}
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <InfectedCard data={apiData} />
             </Col>
           </Row>
         </Container>

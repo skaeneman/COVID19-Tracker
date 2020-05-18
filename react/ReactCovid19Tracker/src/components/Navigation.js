@@ -14,7 +14,7 @@ import Dashboard from './Dashboard';
 export default class Navigation extends Component {
   render() {
 
-    console.log("nav... ", this.props);
+    // console.log("nav... ", this.props);
 
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
