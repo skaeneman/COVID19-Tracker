@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card } from 'react-bootstrap';
+import CountUp from 'react-countup';
 
 const Deaths = ({ data: { deaths, lastUpdate } }) => {
   if (!deaths) {
@@ -16,7 +17,12 @@ const Deaths = ({ data: { deaths, lastUpdate } }) => {
         <Card.Body>
           <Card.Title>Deaths</Card.Title>
           <Card.Text>
-            Deaths: { deaths.value }
+          <CountUp 
+              start={0}
+              end={deaths.value}
+              duration={5}
+              separator=","
+            />
           </Card.Text>
         </Card.Body>
         <Card.Footer className="text-muted">{ lastUpdate }</Card.Footer>

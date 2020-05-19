@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card } from 'react-bootstrap';
+import CountUp from 'react-countup';
 
 const Recovered = ({ data: { recovered, lastUpdate } }) => {
   if (!recovered) {
@@ -13,7 +14,12 @@ const Recovered = ({ data: { recovered, lastUpdate } }) => {
         <Card.Body>
           <Card.Title>Recovered</Card.Title>
           <Card.Text>
-            Recovered: { recovered.value }
+          <CountUp 
+              start={0}
+              end={recovered.value}
+              duration={5}
+              separator=","
+            />
           </Card.Text>
         </Card.Body>
         <Card.Footer className="text-muted">{ lastUpdate }</Card.Footer>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card } from 'react-bootstrap';
+import CountUp from 'react-countup';
 
 const Confirmed = ({ data: { confirmed, lastUpdate } }) => {
   if (!confirmed) {
@@ -13,7 +14,12 @@ const Confirmed = ({ data: { confirmed, lastUpdate } }) => {
         <Card.Body>
           <Card.Title>Confirmed Cases</Card.Title>
           <Card.Text>
-            Confirmed cases: { confirmed.value }
+            <CountUp 
+              start={0}
+              end={confirmed.value}
+              duration={5}
+              separator=","
+            />
           </Card.Text>
         </Card.Body>
         <Card.Footer className="text-muted">{ lastUpdate }</Card.Footer>
