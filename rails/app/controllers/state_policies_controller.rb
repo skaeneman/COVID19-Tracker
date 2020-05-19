@@ -4,7 +4,8 @@ class StatePoliciesController < ApplicationController
   # # GET /state_policies
   # # GET /state_policies.json
   # def index
-  #   @state_policies = StatePolicy.all
+  #   # @state_policies = StatePolicy.all
+  #   Rails.logger.debug("inside index action.....")
   # end
 
   # GET /state_policies/1

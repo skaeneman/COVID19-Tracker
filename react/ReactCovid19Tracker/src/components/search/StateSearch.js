@@ -18,11 +18,8 @@ export default function StateSearch() {
         }
       }).then(response => {
         // the response back from the Rails server
-
-        console.log("state policy: ", response); 
-
         if (response.status === 200) {
-          console.log(response.data.state_name); 
+          console.log(response.data);     
         }
       }).catch(error => {
         console.log("Error fetching the state ", americanState.value, error);

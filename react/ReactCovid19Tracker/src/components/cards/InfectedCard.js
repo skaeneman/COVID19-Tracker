@@ -17,7 +17,7 @@ const Confirmed = ({ data: { confirmed, lastUpdate } }) => {
             <CountUp 
               start={0}
               end={confirmed.value}
-              duration={5}
+              duration={3}
               separator=","
             />
           </Card.Text>

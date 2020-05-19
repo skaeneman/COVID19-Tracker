@@ -17,7 +17,7 @@ const Recovered = ({ data: { recovered, lastUpdate } }) => {
           <CountUp 
               start={0}
               end={recovered.value}
-              duration={5}
+              duration={3}
               separator=","
             />
           </Card.Text>

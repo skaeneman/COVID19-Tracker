@@ -43,7 +43,6 @@ export default class Home extends Component {
           handleLogout={this.props.handleLogout} 
         />
         <Container>
-        <StateSearch />
           <Row>
             <Col>
               <h1>Home Page</h1>

@@ -6,6 +6,7 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 import LoginPage from './LoginPage';
 import RegistrationPage from './RegistrationPage';
+import StatePolicyPage from './StatePolicyPage';
 
 export default class App extends Component {
 
@@ -131,7 +132,20 @@ export default class App extends Component {
                   loggedInStatus={this.state.loggedInStatus}
                 />
               )}
-            />                    
+            />    
+            <Route
+              exact
+              path={"/states"}
+              render={props => (
+                <StatePolicyPage
+                  {...props}
+                  handleLogin={this.handleLogin}
+                  handleLogout={this.handleLogout}
+                  handleLogoutClick={this.handleLogoutClick}
+                  loggedInStatus={this.state.loggedInStatus}
+                />
+              )}
+            />                               
           </Switch>
         </BrowserRouter>
       </div>

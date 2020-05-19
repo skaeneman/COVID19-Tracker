@@ -20,7 +20,7 @@ const Deaths = ({ data: { deaths, lastUpdate } }) => {
           <CountUp 
               start={0}
               end={deaths.value}
-              duration={5}
+              duration={3}
               separator=","
             />
           </Card.Text>
