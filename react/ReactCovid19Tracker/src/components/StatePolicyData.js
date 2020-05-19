@@ -1,17 +1,11 @@
 import React from 'react'
 import { Card, Row, Col } from 'react-bootstrap';
 
-export default function StatePolicyData(props) {
-  
-  console.log("props in StatePolicyData ", props.stateData);
-
-  // const { myState } = props.stateData
-  // console.log("myState ", myState);
+export default function StatePolicyData(props) {  
+  // console.log("props in StatePolicyData ", props.stateData);
 
   return (
     <div>
-      <h3>hello from state policy data page...</h3>
-
         <Card className="text-center"
           bg="light"
           text='dark'    
@@ -21,7 +15,6 @@ export default function StatePolicyData(props) {
             <Card.Title>State Data</Card.Title>
             <Card.Text as="span">
             <div>
-            {/* id: { state.id } */}
               <Row>
                 <Col xs="2" className="text-left">id:</Col>
                 <Col className="text-left">{ props.stateData.id }</Col>
