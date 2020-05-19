@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card } from 'react-bootstrap';
 
-const Confirmed = ({ data: { confirmed } }) => {
+const Confirmed = ({ data: { confirmed, lastUpdate } }) => {
   if (!confirmed) {
     return 'Loading...';
   }
@@ -9,14 +9,14 @@ const Confirmed = ({ data: { confirmed } }) => {
   return (
     <div>
       <Card className="text-center">
-        <Card.Header>Featured</Card.Header>
+        <Card.Header>Confirmed</Card.Header>
         <Card.Body>
-          <Card.Title>Special title treatment</Card.Title>
+          <Card.Title>Confirmed Cases</Card.Title>
           <Card.Text>
-            Confirmed cases: {confirmed.value}
+            Confirmed cases: { confirmed.value }
           </Card.Text>
         </Card.Body>
-        <Card.Footer className="text-muted">2 days ago</Card.Footer>
+        <Card.Footer className="text-muted">{ lastUpdate }</Card.Footer>
       </Card>       
     </div>
   )

@@ -11,6 +11,8 @@ import StateSearch from './search/StateSearch';
 import Footer from './Footer';
 import { fetchData } from '../api/';
 import InfectedCard from './cards/InfectedCard';
+import DeathCard from './cards/DeathCard';
+import RecoveredCard from './cards/RecoveredCard';
 
 export default class Home extends Component {
   constructor(props) {
@@ -54,6 +56,12 @@ export default class Home extends Component {
             <Col>
               <InfectedCard data={apiData} />
             </Col>
+            <Col>
+              <DeathCard data={apiData} />
+            </Col>   
+            <Col>
+              <RecoveredCard data={apiData} />
+            </Col>                       
           </Row>
         </Container>
         <Footer />
