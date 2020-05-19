@@ -5,7 +5,7 @@ import axios from 'axios';
 import statesJSON from '../../helpers/states'; 
 
 // uses the 'react-select' package
-export default function StateSearch() {
+export default function StateSearch(props) {
   const [americanState, setAmericanState] = useState();
 
     // if a state was selected from the dropdown
@@ -19,7 +19,7 @@ export default function StateSearch() {
       }).then(response => {
         // the response back from the Rails server
         if (response.status === 200) {
-          console.log(response.data);     
+          props.parentCallback(response.data); // send data back up to parent
         }
       }).catch(error => {
         console.log("Error fetching the state ", americanState.value, error);
