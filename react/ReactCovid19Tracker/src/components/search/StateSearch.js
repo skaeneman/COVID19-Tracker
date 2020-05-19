@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
 import axios from 'axios';
@@ -8,10 +8,9 @@ import statesJSON from '../../helpers/states';
 export default function StateSearch(props) {
   const [americanState, setAmericanState] = useState();
 
+  useEffect(() => {
     // if a state was selected from the dropdown
     if (americanState) {
-      // console.log("state to pass to Rails: ", americanState.value);
-
       axios.get("http://localhost:3001/state_policies/get_state_policy", {
         params: {
           state: americanState.value
@@ -26,6 +25,7 @@ export default function StateSearch(props) {
       })
       event.preventDefault();
     }    
+  }, [americanState]);
 
   // the dropdown select box for states.
   return (
@@ -36,7 +36,8 @@ export default function StateSearch(props) {
         onChange={setAmericanState}
         noOptionsMessage={() => 'Uh-oh nothing matches your search'}
         className=""
-        components={makeAnimated()}
+        // components={makeAnimated()}
+        components={() => makeAnimated()}
         isSearchable
         isClearable={true}
       />
