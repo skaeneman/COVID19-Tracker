@@ -1,3 +1,6 @@
 class StatePolicy < ApplicationRecord
-  has_many :businesses
+  has_one :business
+
+  scope :get_state_data, ->(state) { where("state_name =?", state).first }
+
 end

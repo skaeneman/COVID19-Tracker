@@ -15,12 +15,40 @@ class StatePoliciesController < ApplicationController
 
   
   def get_state_policy
-    @state_policy = StatePolicy.find_by(state_name: params[:state])
+    # state_policy = StatePolicy.find_by(state_name: params[:state])
+
+    # state_policy = StatePolicy.find_by(state_name: params[:state])
+
+    # state_policy = StatePolicy.joins(:business).where("business.state_policies_id = state_policies.id")
+
+    state_policy = StatePolicy.get_state_data(params[:state])
+
+    # state_policy = StatePolicy.includes(:business).find_by(state_name: params[:state])
+
+    Rails.logger.debug("state_policy..... #{state_policy.inspect}")
+
+
+    # eager_people.map(&:country).map(&:name) 
+
+
+    # policy_array = []
+
+    # if state_policy
+    #   biz = Business.find_by(state_policies_id: state_policy.id)
+    # end
+
+    # Rails.logger.debug("biz..... #{biz.inspect}")
+    # Rails.logger.debug("state_policy..... #{state_policy.inspect}")
+
+    # policy_array << state_policy 
+    # policy_array << biz
+
+    # Rails.logger.debug("policy_array..... #{policy_array.inspect}")
 
     # render json: @state_policy.as_json(only: %i(id state_name))
     respond_to do |format|
-      if @state_policy
-        format.json { render :json => @state_policy, status: 200 }
+      if state_policy
+        format.json { render :json => state_policy, status: 200 }
       else
         format.json { render json: "No data available for #{params[:state]}" }
       end

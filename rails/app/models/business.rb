@@ -1,3 +1,3 @@
 class Business < ApplicationRecord
-  belongs_to :state_policy, optional: true
+  belongs_to :state_policies, optional: true
 end
