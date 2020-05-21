@@ -69,6 +69,6 @@ class FaceMasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def face_mask_params
-      params.require(:face_mask).permit(:mandate_use_for_everyone, :mandate_use_for_employees_of_public_facing_businesses, :state_policies_id)
+      params.require(:face_mask).permit(:mandate_use_for_everyone, :mandate_use_for_employees_of_public_facing_businesses, :state_policy_id)
     end
 end

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>State policy:</strong>
+  <%= @test.state_policy_id %>
+</p>
+
+<p>
+  <strong>Test col:</strong>
+  <%= @test.test_col %>
+</p>
+
+<%= link_to 'Edit', edit_test_path(@test) %> |
+<%= link_to 'Back', tests_path %>

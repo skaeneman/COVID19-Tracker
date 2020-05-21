@@ -15,13 +15,28 @@ class StatePoliciesController < ApplicationController
 
   
   def get_state_policy
-    # state_policy = StatePolicy.find_by(state_name: params[:state])
+    # state_policy = StatePolicy.find_by(state_name: params[:state]).includes(:test)
 
-    # state_policy = StatePolicy.find_by(state_name: params[:state])
 
-    # state_policy = StatePolicy.joins(:business).where("business.state_policies_id = state_policies.id")
+    # state_policy = StatePolicy.joins(:test).joins(:face_mask)
+    # state_policy.each do |p|
+    #   Rails.logger.debug("test..... #{p.test.test_col}")
+    # end
 
-    state_policy = StatePolicy.get_state_data(params[:state])
+    # eager-load (cache) the assocaited tables
+    state_policy = StatePolicy.includes(:test).includes(:face_mask)
+
+    # state_policy.each do |p|
+    #   Rails.logger.debug("p.cal..... #{p.test.inspect}")
+    #   Rails.logger.debug("p.cal..... #{p.face_mask.inspect}")
+    # end
+
+
+    # state_policy = StatePolicy.joins(:test).where(Test.table_name => {state_policy_id: 1})      
+    # state_policy = StatePolicy.joins(:test).merge(StatePolicy.where(id: 1))
+
+
+    # state_policy = StatePolicy.get_state_data(params[:state])
 
     # state_policy = StatePolicy.includes(:business).find_by(state_name: params[:state])
 
@@ -47,8 +62,10 @@ class StatePoliciesController < ApplicationController
 
     # render json: @state_policy.as_json(only: %i(id state_name))
     respond_to do |format|
-      if state_policy
-        format.json { render :json => state_policy, status: 200 }
+      if state_policy        
+        format.json { render json: state_policy.to_json( include: [:test, :face_mask], status: 200 ) }
+
+        # format.json { render :json => state_policy, status: 200 }
       else
         format.json { render json: "No data available for #{params[:state]}" }
       end

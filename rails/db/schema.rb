@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_014829) do
+ActiveRecord::Schema.define(version: 2020_05_21_031743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 2020_05_21_014829) do
   end
 
   create_table "face_masks", force: :cascade do |t|
-    t.bigint "state_policies_id", null: false
     t.date "mandate_use_for_everyone"
     t.date "mandate_use_for_employees_of_public_facing_businesses"
+    t.bigint "state_policy_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["state_policies_id"], name: "index_face_masks_on_state_policies_id"
+    t.index ["state_policy_id"], name: "index_face_masks_on_state_policy_id"
   end
 
   create_table "state_policies", force: :cascade do |t|
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 2020_05_21_014829) do
     t.date "shelter_in_place_end"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.bigint "state_policy_id", null: false
+    t.string "test_col"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_policy_id"], name: "index_tests_on_state_policy_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,5 +73,6 @@ ActiveRecord::Schema.define(version: 2020_05_21_014829) do
   end
 
   add_foreign_key "businesses", "state_policies", column: "state_policies_id"
-  add_foreign_key "face_masks", "state_policies", column: "state_policies_id"
+  add_foreign_key "face_masks", "state_policies"
+  add_foreign_key "tests", "state_policies"
 end
