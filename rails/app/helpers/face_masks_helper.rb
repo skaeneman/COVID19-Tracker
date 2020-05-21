@@ -1,0 +1,2 @@
+module FaceMasksHelper
+end

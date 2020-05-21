@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :face_masks
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
   

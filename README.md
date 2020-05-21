@@ -1,7 +1,9 @@
 # README
 
-start the Rails server on a different port than the typical 3000 such as 30001
+start the Rails server on a different port than the typical 3000 such as 3001
 rails s -p 3001
+
+database design consists of 5 tables that have foreign keys referening a state policy table....
 
 start React on port 3000 by running npm run start
 
