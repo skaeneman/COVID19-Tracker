@@ -1,7 +1,7 @@
 class StatePolicy < ApplicationRecord
   has_one :business
   has_one :face_mask
-  has_one :test
+  
 
   # scope :get_state_data, ->(state) { where("state_name =?", state).joins(:business).where('state_policies = ?', 1).limit(1) }
 
