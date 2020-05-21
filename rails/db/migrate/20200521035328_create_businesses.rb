@@ -1,7 +1,7 @@
 class CreateBusinesses < ActiveRecord::Migration[6.0]
   def change
     create_table :businesses do |t|
-      t.references :state_policies, null: false, foreign_key: true
+      t.references :state_policy, null: false, foreign_key: true
       t.date :day_cares_closed
       t.date :nursing_home_visitors_banned
       t.date :non_essential_businesses_closed

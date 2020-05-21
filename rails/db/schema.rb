@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_031743) do
+ActiveRecord::Schema.define(version: 2020_05_21_035328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "businesses", force: :cascade do |t|
-    t.bigint "state_policies_id", null: false
+    t.bigint "state_policy_id", null: false
     t.date "day_cares_closed"
     t.date "nursing_home_visitors_banned"
     t.date "non_essential_businesses_closed"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_031743) do
     t.date "reopened_movie_theaters"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["state_policies_id"], name: "index_businesses_on_state_policies_id"
+    t.index ["state_policy_id"], name: "index_businesses_on_state_policy_id"
   end
 
   create_table "face_masks", force: :cascade do |t|
@@ -54,14 +54,6 @@ ActiveRecord::Schema.define(version: 2020_05_21_031743) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.bigint "state_policy_id", null: false
-    t.string "test_col"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["state_policy_id"], name: "index_tests_on_state_policy_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -72,7 +64,6 @@ ActiveRecord::Schema.define(version: 2020_05_21_031743) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "businesses", "state_policies", column: "state_policies_id"
+  add_foreign_key "businesses", "state_policies"
   add_foreign_key "face_masks", "state_policies"
-  add_foreign_key "tests", "state_policies"
 end

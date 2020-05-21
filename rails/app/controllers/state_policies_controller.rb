@@ -24,7 +24,7 @@ class StatePoliciesController < ApplicationController
     # end
 
     # eager-load (cache) the assocaited tables
-    state_policy = StatePolicy.includes(:test).includes(:face_mask)
+    state_policy = StatePolicy.includes(:business).includes(:face_mask)
 
     # state_policy.each do |p|
     #   Rails.logger.debug("p.cal..... #{p.test.inspect}")
@@ -63,7 +63,7 @@ class StatePoliciesController < ApplicationController
     # render json: @state_policy.as_json(only: %i(id state_name))
     respond_to do |format|
       if state_policy        
-        format.json { render json: state_policy.to_json( include: [:test, :face_mask], status: 200 ) }
+        format.json { render json: state_policy.to_json( include: [:business, :face_mask], status: 200 ) }
 
         # format.json { render :json => state_policy, status: 200 }
       else
