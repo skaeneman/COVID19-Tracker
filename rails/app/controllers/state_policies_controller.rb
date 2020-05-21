@@ -13,7 +13,6 @@ class StatePoliciesController < ApplicationController
   # def show
   # end
 
-  
   def get_state_policy
     # lookup state then eager-load (cache) the associated tables
     state_policy = StatePolicy.includes(:business)

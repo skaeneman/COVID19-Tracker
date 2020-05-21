@@ -22,7 +22,7 @@ export default function StatePolicyData(props) {
               <Row>
                 <Col xs="2" className="text-left">state:</Col>
                 <Col className="text-left">{ props.stateData.stateName }</Col>
-              </Row>
+              </Row>                           
             </div>
             </Card.Text>
           </Card.Body>

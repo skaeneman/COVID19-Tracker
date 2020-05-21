@@ -6,7 +6,8 @@ import Col from 'react-bootstrap/Col';
 import StateSearch from './search/StateSearch';
 import Footer from './Footer';
 import StatePolicyData from './StatePolicyData';
-
+import StateFaceMaskData from './StateFaceMaskData';
+import StateBusinessData from './StateBusinessData'
 
 export default class StatePolicyPage extends Component {
   constructor(props) {
@@ -20,14 +21,22 @@ export default class StatePolicyPage extends Component {
       shelterInPlaceEnd: '',
       stateOfEmergency: '',
       updatedAt: '',
-      createdAt: ''
+      createdAt: '',
+
+      //businesses
+      dayCaresClosedOn: '',
+
+      // face masks
+      mandateUseForEveryone: '',
+      mandateUseForEmployeesOfPublicFacingBusinesses: '',
+
     }    
   }
 
   // gets data returned from the select state dropdown
   callbackFunction = (childData) => {
     console.log("StatePolicy: ", childData);
-
+     
     // set the "this.state" data for a US State
     this.setState({
       id: childData.id,
@@ -37,8 +46,15 @@ export default class StatePolicyPage extends Component {
       shelterInPlaceEnd: childData.shelter_in_place_end,
       stateOfEmergency: childData.state_of_emergency,
       updatedAt: childData.updated_at,
-      createdAt: childData.created_at
-    })
+      createdAt: childData.created_at,
+
+      // business
+      dayCaresClosedOn: childData.business.day_cares_closed,
+
+      // face masks
+      mandateUseForEveryone: childData.face_mask.mandate_use_for_everyone,
+      mandateUseForEmployeesOfPublicFacingBusinesses: childData.face_mask.mandate_use_for_employees_of_public_facing_businesses,
+    });
   }
 
   render() {
@@ -53,7 +69,12 @@ export default class StatePolicyPage extends Component {
         <Container>
          {/* pass the dropdown value from the StateSearch child back to this parent componenet  */}
           <StateSearch parentCallback={this.callbackFunction} /> 
+
+          {/* populate the page with the JSON callback data */}
           <StatePolicyData stateData={this.state} />
+          <StateFaceMaskData faceMaskData={this.state} />
+          <StateBusinessData businessData={this.state} />
+
         </Container>
         {/* <Footer /> */}
       </div>
