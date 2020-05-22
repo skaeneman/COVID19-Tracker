@@ -4,16 +4,25 @@ import CountUp from 'react-countup';
 
 const Confirmed = ({ data: { confirmed, lastUpdate } }) => {
   if (!confirmed) {
-    return 'Loading...';
+    return (
+      <div>
+        <Card className="text-center bg-dark">
+          <Card.Body>
+            <Card.Text className="text-white">
+              Loading...
+            </Card.Text>
+            <Card.Title className="text-white">Confirmed</Card.Title>
+          </Card.Body>
+        </Card>       
+      </div>
+    )
   }
 
   return (
     <div>
-      <Card className="text-center">
-        <Card.Header>Confirmed</Card.Header>
+      <Card className="text-center bg-dark">
         <Card.Body>
-          <Card.Title>Confirmed Cases</Card.Title>
-          <Card.Text>
+          <Card.Text className="covid-numbers text-white">
             <CountUp 
               start={0}
               end={confirmed.value}
@@ -21,8 +30,8 @@ const Confirmed = ({ data: { confirmed, lastUpdate } }) => {
               separator=","
             />
           </Card.Text>
+          <Card.Title className="text-white">Confirmed</Card.Title>
         </Card.Body>
-        <Card.Footer className="text-muted">{ lastUpdate }</Card.Footer>
       </Card>       
     </div>
   )

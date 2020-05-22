@@ -12,6 +12,7 @@ import Footer from './Footer';
 import Home from './Home';
 import '../style/main.scss';
 
+document.body.style.backgroundColor = "#212529";
 
 export default class RegistrationPage extends Component {
   constructor(props) {

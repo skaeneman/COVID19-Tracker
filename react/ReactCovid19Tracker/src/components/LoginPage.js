@@ -13,6 +13,9 @@ import Home from './Home';
 import '../style/login.css';
 import '../style/main.scss';
 
+
+document.body.style.backgroundColor = "#212529";
+
 export default class LoginPage extends Component {
   constructor(props) {
     super(props);

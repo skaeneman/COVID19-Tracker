@@ -4,28 +4,34 @@ import CountUp from 'react-countup';
 
 const Deaths = ({ data: { deaths, lastUpdate } }) => {
   if (!deaths) {
-    return 'Loading...';
+    return (
+      <div>
+        <Card className="text-center bg-dark">
+          <Card.Body>
+            <Card.Text className="text-white">
+              Loading...
+            </Card.Text>
+            <Card.Title className="text-white">Deaths</Card.Title>
+          </Card.Body>
+        </Card>       
+      </div>
+    )
   }
 
   return (
     <div>
-      <Card className="text-center"
-        bg="light"
-        text='dark'    
-      >
-        <Card.Header>Deaths</Card.Header>
+      <Card className="text-center bg-dark">
         <Card.Body>
-          <Card.Title>Deaths</Card.Title>
-          <Card.Text>
-          <CountUp 
+          <Card.Text className="covid-numbers text-danger">
+            <CountUp 
               start={0}
               end={deaths.value}
               duration={3}
               separator=","
             />
           </Card.Text>
+          <Card.Title className="text-white">Deaths</Card.Title>
         </Card.Body>
-        <Card.Footer className="text-muted">{ lastUpdate }</Card.Footer>
       </Card>       
     </div>
   )

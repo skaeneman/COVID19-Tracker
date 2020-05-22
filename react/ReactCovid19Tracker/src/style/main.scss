@@ -1,6 +1,29 @@
+@import '~bootstrap/scss/_functions';
+@import '~bootstrap/scss/_variables';
+@import '~bootstrap/scss/mixins/_breakpoints';
+
+html, body {
+  height: 100%;
+}
+
 .dark-background {
   background-color: #212529;
 }
+
+.covid-numbers {
+  font-size: 30px;
+}
+
+.jumbotron-padding {
+  padding-top: 100px;
+}
+
+@include media-breakpoint-up(sm) {
+  .btn-block-down {
+    display: block;
+  }
+}
+
 
 
 // html {

@@ -33,8 +33,8 @@ export default function HomeDataAnimations() {
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec nulla pretium, fringilla risus a, viverra velit. Maecenas congue sapien eu justo egestas malesuada. Vivamus massa mauris, venenatis at tristique quis, pellentesque ac quam. In tincidunt enim nec ipsum finibus, ac ultricies est dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vulputate id justo quis tempus. Mauris felis augue, dictum vel eros a, pretium mattis massa. Ut eget mauris nec mauris maximus hendrerit in et sem. Nam urna mi, tincidunt nec sodales ac, sodales id massa. Praesent non mauris eget elit scelerisque convallis dictum vitae neque. Sed vitae dolor blandit, scelerisque arcu vitae, dapibus leo. Fusce efficitur volutpat mollis. Pellentesque euismod lorem eu lacus aliquet, nec euismod urna convallis.
           </Card.Body>
         </Card>
-      </section><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-      <div data-aos="slide-left">
+      </section><br />
+      <div data-aos="fade-up">
         <Card>
           <Card.Body>
             Sed maximus laoreet ante, eget tincidunt ligula egestas at. Donec sem lorem, commodo nec eleifend vel, pharetra scelerisque nibh. Etiam rhoncus consequat porta. In convallis sed ex sed fringilla. Nam eget mauris turpis. Donec accumsan dignissim hendrerit. Donec arcu mauris, vestibulum id enim sit amet, cursus euismod nisi. Donec turpis nibh, pretium ut mi in, tincidunt tempus orci. Duis in feugiat odio, quis lobortis nisl. Ut accumsan tempor vehicula. Donec dictum finibus posuere. Morbi ultricies condimentum nisi at vehicula.

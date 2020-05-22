@@ -5,7 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 export default class Footer extends Component {
   render() {
     return (
-      <div>
+      <div className="fixed-bottom">
         <Navbar bg="dark" variant="dark" sticky="bottom">
           <Navbar.Brand href="#home">Footer Goes Here</Navbar.Brand>
           <Nav className="mr-auto">

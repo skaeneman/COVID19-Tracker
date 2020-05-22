@@ -27,7 +27,7 @@ export default class Home extends Component {
 
   async componentDidMount() {
     // gets the COVID-19 data from an external API call
-    // const covidApiData = await fetchData();
+    const covidApiData = await fetchData();
     // console.log(covidApiData);
     this.setState({ apiData: covidApiData });
   }
@@ -45,17 +45,14 @@ export default class Home extends Component {
           handleLogout={this.props.handleLogout} 
         />
         <Container>
+          <br />
           <Row>
             <Col className="text-light">
-              <h1>Status: {this.props.loggedInStatus}</h1>    
+              {/* <h1>Status: {this.props.loggedInStatus}</h1>     */}
               {/* <Button variant="danger" onClick={() => this.handleLogoutClick()}>logout</Button> */}
               {/* <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} /> */}
             </Col>
           </Row>  
-
-          <HomeDataAnimations />
-
-
           <Row>
             <Col>
               <InfectedCard data={apiData} />
@@ -67,6 +64,8 @@ export default class Home extends Component {
               <RecoveredCard data={apiData} />
             </Col>                       
           </Row>
+          <br />
+          <HomeDataAnimations />
         </Container>
         <Footer />
       </div>

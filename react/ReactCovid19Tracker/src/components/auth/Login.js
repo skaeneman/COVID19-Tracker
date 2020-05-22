@@ -3,6 +3,7 @@ import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Jumbotron from 'react-bootstrap/Jumbotron';
+import '../../style/main.scss';
 
 export default class Login extends Component {
     constructor(props) {
@@ -53,8 +54,9 @@ export default class Login extends Component {
 
     render() {
         return (
-              <Jumbotron>
-                <h1>Login</h1>
+          <div className="jumbotron-padding">
+              <Jumbotron className="bg-dark text-light">
+                <h1 className="">Login</h1>
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Group controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -66,7 +68,7 @@ export default class Login extends Component {
                       onChange={this.handleChange}
                       required                   
                     />
-                    <Form.Text className="text-muted">
+                    <Form.Text className="text-white">
                       We'll never share your email with anyone else.
                     </Form.Text>
                   </Form.Group>
@@ -81,11 +83,13 @@ export default class Login extends Component {
                       required 
                     />
                   </Form.Group>
-                  <Button variant="primary" type="submit">
-                    Submit
+                  <Button variant="primary" type="submit" className="float-right btn btn-block-down">
+                    Login
                   </Button>
+                  <br />
                 </Form>
               </Jumbotron> 
+          </div>
         )
     }
 }
