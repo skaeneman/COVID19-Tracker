@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import Registration from './auth/Registration'
 import Login from './auth/Login';
 import Navigation from './Navigation';
@@ -13,6 +13,8 @@ import { fetchData } from '../api/';
 import InfectedCard from './cards/InfectedCard';
 import DeathCard from './cards/DeathCard';
 import RecoveredCard from './cards/RecoveredCard';
+import HomeDataAnimations from './HomeDataAnimations';
+import '../style/home.css'
 
 export default class Home extends Component {
   constructor(props) {
@@ -25,7 +27,7 @@ export default class Home extends Component {
 
   async componentDidMount() {
     // gets the COVID-19 data from an external API call
-    const covidApiData = await fetchData();
+    // const covidApiData = await fetchData();
     // console.log(covidApiData);
     this.setState({ apiData: covidApiData });
   }
@@ -34,7 +36,7 @@ export default class Home extends Component {
     const { apiData } = this.state;
 
     return (
-      <div>
+      <div className="home-background">
          {/* create the isLoggedIn prop and pass it to the Navigation componenet */}
         <Navigation 
           isLoggedIn={this.props.loggedInStatus} 
@@ -44,13 +46,16 @@ export default class Home extends Component {
         />
         <Container>
           <Row>
-            <Col>
-              <h1>Home Page</h1>
+            <Col className="text-light">
               <h1>Status: {this.props.loggedInStatus}</h1>    
               {/* <Button variant="danger" onClick={() => this.handleLogoutClick()}>logout</Button> */}
               {/* <Registration handleSuccessfulAuth={this.handleSuccessfulAuth} /> */}
             </Col>
-          </Row>
+          </Row>  
+
+          <HomeDataAnimations />
+
+
           <Row>
             <Col>
               <InfectedCard data={apiData} />

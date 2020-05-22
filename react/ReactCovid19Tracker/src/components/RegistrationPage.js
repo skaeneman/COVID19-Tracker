@@ -10,6 +10,7 @@ import Col from 'react-bootstrap/Col';
 import StateSearch from './search/StateSearch';
 import Footer from './Footer';
 import Home from './Home';
+import '../style/main.scss';
 
 
 export default class RegistrationPage extends Component {
@@ -31,7 +32,7 @@ export default class RegistrationPage extends Component {
     console.log("Reg Page props...", this.props);
 
     return (
-      <div>
+      <div className="dark-background">
         <Navigation 
           isLoggedIn={this.props.loggedInStatus} 
           handleLogoutClick={this.props.handleLogoutClick} 

@@ -10,7 +10,8 @@ import Col from 'react-bootstrap/Col';
 import StateSearch from './search/StateSearch';
 import Footer from './Footer';
 import Home from './Home';
-
+import '../style/login.css';
+import '../style/main.scss';
 
 export default class LoginPage extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ export default class LoginPage extends Component {
   
   render() {
     return (
-      <div>
+      <div className="dark-background">
         <Navigation 
           isLoggedIn={this.props.loggedInStatus} 
         />
