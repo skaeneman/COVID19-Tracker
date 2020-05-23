@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import Navigation from './Navigation';
+import Navigation from '../Navigation';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import StateSearch from './search/StateSearch';
-import Footer from './Footer';
-import StatePolicyData from './StatePolicyData';
-import StateFaceMaskData from './StateFaceMaskData';
-import StateBusinessData from './StateBusinessData'
+import StateSearch from '../search/StateSearch';
+import Footer from '../Footer';
+import StatePolicyData from '../state-data/StatePolicyData';
+import StateFaceMaskData from '../state-data/StateFaceMaskData';
+import StateBusinessData from '../state-data/StateBusinessData'
+import StatePropertyData from '../state-data/StatePropertyData';
 
 export default class StatePolicyPage extends Component {
   constructor(props) {

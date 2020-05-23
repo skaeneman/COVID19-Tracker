@@ -4,9 +4,9 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 import Home from './Home';
 import Dashboard from './Dashboard';
-import LoginPage from './LoginPage';
-import RegistrationPage from './RegistrationPage';
-import StatePolicyPage from './StatePolicyPage';
+import LoginPage from './pages/LoginPage';
+import RegistrationPage from './pages/RegistrationPage';
+import StatePolicyPage from './pages/StatePolicyPage';
 
 export default class App extends Component {
 
