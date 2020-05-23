@@ -31,6 +31,13 @@ export default class StatePolicyPage extends Component {
       mandateUseForEveryone: '',
       mandateUseForEmployeesOfPublicFacingBusinesses: '',
 
+      // properties
+      stopInitiatingEvictions: '',
+      stopEnforcingEvictions: '',
+      gracePeriodOrSecurityDepositTowardsRent: '',
+      frozeUtilityShutOffs: '',
+      frozeMortgagePayments: '',
+
     }    
   }
 
@@ -51,10 +58,20 @@ export default class StatePolicyPage extends Component {
 
       // business
       dayCaresClosedOn: childData.business.day_cares_closed,
+      //TODO:  ADD REST OF BIZ DATA
 
       // face masks
       mandateUseForEveryone: childData.face_mask.mandate_use_for_everyone,
       mandateUseForEmployeesOfPublicFacingBusinesses: childData.face_mask.mandate_use_for_employees_of_public_facing_businesses,
+
+      // property data
+      stopInitiatingEvictions: childData.property.stop_initiating_evictions,
+      stopEnforcingEvictions: childData.property.stop_enforcing_evictions,
+      gracePeriodOrSecurityDepositTowardsRent: childData.property.grace_period_or_security_deposit_towards_rent,
+      frozeUtilityShutOffs: childData.property.froze_utility_shut_offs,
+      frozeMortgagePayments: childData.property.froze_mortgage_payments,
+
+      
     });
   }
 
@@ -75,6 +92,7 @@ export default class StatePolicyPage extends Component {
           <StatePolicyData stateData={this.state} />
           <StateFaceMaskData faceMaskData={this.state} />
           <StateBusinessData businessData={this.state} />
+          <StatePropertyData propertyData={this.state} />
 
         </Container>
         {/* <Footer /> */}

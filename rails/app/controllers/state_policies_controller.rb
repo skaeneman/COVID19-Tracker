@@ -17,6 +17,7 @@ class StatePoliciesController < ApplicationController
     # lookup state then eager-load (cache) the associated tables
     state_policy = StatePolicy.includes(:business)
                               .includes(:face_mask)
+                              .includes(:property)
                               .find_by(state_name: params[:state])
 
     # state_policy = StatePolicy.get_state_data(params[:state])
@@ -26,7 +27,7 @@ class StatePoliciesController < ApplicationController
 
     respond_to do |format|
       if state_policy        
-        format.json { render json: state_policy.to_json( include: [:business, :face_mask], status: 200 ) }
+        format.json { render json: state_policy.to_json( include: [:business, :face_mask, :property], status: 200 ) }
       else
         format.json { render json: "No data available for #{params[:state]}" }
       end
