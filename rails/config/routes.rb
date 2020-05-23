@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :health_cares
   resources :properties
   resources :businesses
   resources :face_masks

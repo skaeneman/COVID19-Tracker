@@ -1,0 +1,67 @@
+<%= form_with(model: health_care, local: true) do |form| %>
+  <% if health_care.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(health_care.errors.count, "error") %> prohibited this health_care from being saved:</h2>
+
+      <ul>
+        <% health_care.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :state_policy_id %>
+    <%= form.text_field :state_policy_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :modify_medicaid_with_1135_waivers %>
+    <%= form.date_select :modify_medicaid_with_1135_waivers %>
+  </div>
+
+  <div class="field">
+    <%= form.label :aca_special_enrollment_period %>
+    <%= form.date_select :aca_special_enrollment_period %>
+  </div>
+
+  <div class="field">
+    <%= form.label :audio_only_telehealth %>
+    <%= form.date_select :audio_only_telehealth %>
+  </div>
+
+  <div class="field">
+    <%= form.label :allow_or_expand_medicaid_telehealth %>
+    <%= form.date_select :allow_or_expand_medicaid_telehealth %>
+  </div>
+
+  <div class="field">
+    <%= form.label :suspended_elective_medical %>
+    <%= form.date_select :suspended_elective_medical %>
+  </div>
+
+  <div class="field">
+    <%= form.label :resumed_elective_medical %>
+    <%= form.date_select :resumed_elective_medical %>
+  </div>
+
+  <div class="field">
+    <%= form.label :made_efforts_to_limit_abortions %>
+    <%= form.check_box :made_efforts_to_limit_abortions %>
+  </div>
+
+  <div class="field">
+    <%= form.label :limit_abortion_details %>
+    <%= form.text_area :limit_abortion_details %>
+  </div>
+
+  <div class="field">
+    <%= form.label :medicaid_expansion %>
+    <%= form.check_box :medicaid_expansion %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

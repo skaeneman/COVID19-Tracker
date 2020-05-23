@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>State policy:</strong>
+  <%= @health_care.state_policy_id %>
+</p>
+
+<p>
+  <strong>Modify medicaid with 1135 waivers:</strong>
+  <%= @health_care.modify_medicaid_with_1135_waivers %>
+</p>
+
+<p>
+  <strong>Aca special enrollment period:</strong>
+  <%= @health_care.aca_special_enrollment_period %>
+</p>
+
+<p>
+  <strong>Audio only telehealth:</strong>
+  <%= @health_care.audio_only_telehealth %>
+</p>
+
+<p>
+  <strong>Allow or expand medicaid telehealth:</strong>
+  <%= @health_care.allow_or_expand_medicaid_telehealth %>
+</p>
+
+<p>
+  <strong>Suspended elective medical:</strong>
+  <%= @health_care.suspended_elective_medical %>
+</p>
+
+<p>
+  <strong>Resumed elective medical:</strong>
+  <%= @health_care.resumed_elective_medical %>
+</p>
+
+<p>
+  <strong>Made efforts to limit abortions:</strong>
+  <%= @health_care.made_efforts_to_limit_abortions %>
+</p>
+
+<p>
+  <strong>Limit abortion details:</strong>
+  <%= @health_care.limit_abortion_details %>
+</p>
+
+<p>
+  <strong>Medicaid expansion:</strong>
+  <%= @health_care.medicaid_expansion %>
+</p>
+
+<%= link_to 'Edit', edit_health_care_path(@health_care) %> |
+<%= link_to 'Back', health_cares_path %>

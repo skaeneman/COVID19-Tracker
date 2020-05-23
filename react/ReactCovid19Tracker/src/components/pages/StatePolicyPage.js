@@ -9,6 +9,7 @@ import StatePolicyData from '../state-data/StatePolicyData';
 import StateFaceMaskData from '../state-data/StateFaceMaskData';
 import StateBusinessData from '../state-data/StateBusinessData'
 import StatePropertyData from '../state-data/StatePropertyData';
+import StateHealthCareData from '../state-data/StateHealthCareData';
 
 export default class StatePolicyPage extends Component {
   constructor(props) {
@@ -37,6 +38,17 @@ export default class StatePolicyPage extends Component {
       gracePeriodOrSecurityDepositTowardsRent: '',
       frozeUtilityShutOffs: '',
       frozeMortgagePayments: '',
+
+      // health care
+      modifyMedicaidWithWaivers: '',
+      acaSpecialEnrollmentPeriod: '',
+      audioOnlyTelehealth: '',
+      allowOrExpandMedicaidTelehealth: '',
+      suspendedElectiveMedical: '',
+      resumedElectiveMedical: '',
+      madeEffortsToLimitAbortions: false,
+      limitAbortionDetails: '',
+      medicaidExpansion: false,
 
     }    
   }
@@ -71,8 +83,19 @@ export default class StatePolicyPage extends Component {
       frozeUtilityShutOffs: childData.property.froze_utility_shut_offs,
       frozeMortgagePayments: childData.property.froze_mortgage_payments,
 
-      
+      // health care
+      modifyMedicaidWithWaivers: childData.health_care.modify_medicaid_with_1135_waivers,
+      acaSpecialEnrollmentPeriod: childData.health_care.aca_special_enrollment_period,
+      audioOnlyTelehealth: childData.health_care.audio_only_telehealth,
+      allowOrExpandMedicaidTelehealth: childData.health_care.allow_or_expand_medicaid_telehealth,
+      suspendedElectiveMedical: childData.health_care.suspended_elective_medical,
+      resumedElectiveMedical: childData.health_care.resumed_elective_medical,
+      madeEffortsToLimitAbortions: childData.health_care.made_efforts_to_limit_abortions,
+      limitAbortionDetails: childData.health_care.limit_abortion_details,
+      medicaidExpansion: childData.health_care.medicaid_expansion,
     });
+    console.log("missing data...: ", this.state.medicaidExpansion)
+
   }
 
   render() {
@@ -93,6 +116,7 @@ export default class StatePolicyPage extends Component {
           <StateFaceMaskData faceMaskData={this.state} />
           <StateBusinessData businessData={this.state} />
           <StatePropertyData propertyData={this.state} />
+          <StateHealthCareData healthCareData={this.state} />
 
         </Container>
         {/* <Footer /> */}

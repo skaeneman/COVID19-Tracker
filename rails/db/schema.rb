@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_23_170247) do
+ActiveRecord::Schema.define(version: 2020_05_23_182740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,22 @@ ActiveRecord::Schema.define(version: 2020_05_23_170247) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["state_policy_id"], name: "index_face_masks_on_state_policy_id"
+  end
+
+  create_table "health_cares", force: :cascade do |t|
+    t.bigint "state_policy_id", null: false
+    t.date "modify_medicaid_with_1135_waivers"
+    t.date "aca_special_enrollment_period"
+    t.date "audio_only_telehealth"
+    t.date "allow_or_expand_medicaid_telehealth"
+    t.date "suspended_elective_medical"
+    t.date "resumed_elective_medical"
+    t.boolean "made_efforts_to_limit_abortions"
+    t.text "limit_abortion_details"
+    t.boolean "medicaid_expansion"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_policy_id"], name: "index_health_cares_on_state_policy_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -78,5 +94,6 @@ ActiveRecord::Schema.define(version: 2020_05_23_170247) do
 
   add_foreign_key "businesses", "state_policies"
   add_foreign_key "face_masks", "state_policies"
+  add_foreign_key "health_cares", "state_policies"
   add_foreign_key "properties", "state_policies"
 end
