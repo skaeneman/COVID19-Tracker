@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_035328) do
+ActiveRecord::Schema.define(version: 2020_05_23_170247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,18 @@ ActiveRecord::Schema.define(version: 2020_05_21_035328) do
     t.index ["state_policy_id"], name: "index_face_masks_on_state_policy_id"
   end
 
+  create_table "properties", force: :cascade do |t|
+    t.bigint "state_policy_id", null: false
+    t.date "stop_initiating_evictions"
+    t.date "stop_enforcing_evictions"
+    t.date "grace_period_or_security_deposit_towards_rent"
+    t.date "froze_utility_shut_offs"
+    t.date "froze_mortgage_payments"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_policy_id"], name: "index_properties_on_state_policy_id"
+  end
+
   create_table "state_policies", force: :cascade do |t|
     t.string "state_name"
     t.date "state_of_emergency"
@@ -66,4 +78,5 @@ ActiveRecord::Schema.define(version: 2020_05_21_035328) do
 
   add_foreign_key "businesses", "state_policies"
   add_foreign_key "face_masks", "state_policies"
+  add_foreign_key "properties", "state_policies"
 end

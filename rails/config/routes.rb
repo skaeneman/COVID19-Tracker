@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :properties
   resources :businesses
   resources :face_masks
   resources :sessions, only: [:create]
