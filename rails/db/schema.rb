@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_153100) do
+ActiveRecord::Schema.define(version: 2020_05_24_182738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,21 @@ ActiveRecord::Schema.define(version: 2020_05_24_153100) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "state_statistics", force: :cascade do |t|
+    t.bigint "state_policy_id", null: false
+    t.float "population_density_per_square_mile"
+    t.integer "population_2018"
+    t.integer "square_miles"
+    t.integer "homeless_population"
+    t.float "percent_unemployed_2018"
+    t.float "percent_living_below_fed_poverty_line_2018"
+    t.float "percent_at_risk_of_covid"
+    t.float "all_causes_of_death_2018"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["state_policy_id"], name: "index_state_statistics_on_state_policy_id"
+  end
+
   create_table "unemployment_insurances", force: :cascade do |t|
     t.bigint "state_policy_id", null: false
     t.boolean "no_ui_waiting_period"
@@ -110,5 +125,6 @@ ActiveRecord::Schema.define(version: 2020_05_24_153100) do
   add_foreign_key "face_masks", "state_policies"
   add_foreign_key "health_cares", "state_policies"
   add_foreign_key "properties", "state_policies"
+  add_foreign_key "state_statistics", "state_policies"
   add_foreign_key "unemployment_insurances", "state_policies"
 end

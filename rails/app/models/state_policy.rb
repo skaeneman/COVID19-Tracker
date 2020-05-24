@@ -4,6 +4,7 @@ class StatePolicy < ApplicationRecord
   has_one :property
   has_one :health_care
   has_one :unemployment_insurance
+  has_one :state_statistic
   
   # doesn't pull back the business table
   # scope :get_state_data, ->(state) { self.joins('LEFT JOIN businesses ON businesses.state_policies_id = state_policies.id').where("state_policies.state_name =?", state).limit(1) }

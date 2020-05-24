@@ -11,6 +11,7 @@ import StateBusinessData from '../state-data/StateBusinessData'
 import StatePropertyData from '../state-data/StatePropertyData';
 import StateHealthCareData from '../state-data/StateHealthCareData';
 import StateUnemploymentInsuranceData from '../state-data/StateUnemploymentInsuranceData';
+import StateStatisticsData from '../state-data/StateStatisticsData';
 
 
 export default class StatePolicyPage extends Component {
@@ -60,6 +61,16 @@ export default class StatePolicyPage extends Component {
       expandUiForLostChildcareOrSchoolClosures: '',
       extendedTimeForPeopleOnUi: '',
       paidSickLeave: '',
+
+      // state statistics
+      populationDensityPerSquareMile: '',
+      population2018: '',
+      squareMiles: '',
+      homelessPopulation: '',
+      percentUnemployed2018: '',
+      percentLivingBelowFedPovertyLine2018: '',
+      percentAtRiskOfCovid: '',
+      allCausesOfDeath2018: ''     
 
     }    
   }
@@ -114,10 +125,17 @@ export default class StatePolicyPage extends Component {
       extendedTimeForPeopleOnUi: childData.unemployment_insurance.extended_time_for_people_on_ui.toString(),
       paidSickLeave: childData.unemployment_insurance.paid_sick_leave.toString(), 
 
+      // state statistics 
+      populationDensityPerSquareMile: childData.state_statistic.population_density_per_square_mile,
+      population2018: childData.state_statistic.population_2018,
+      squareMiles: childData.state_statistic.square_miles,
+      homelessPopulation: childData.state_statistic.homeless_population,
+      percentUnemployed2018: childData.state_statistic.percent_unemployed_2018,
+      percentLivingBelowFedPovertyLine2018: childData.state_statistic.percent_living_below_fed_poverty_line_2018,
+      percentAtRiskOfCovid: childData.state_statistic.percent_at_risk_of_covid,
+      allCausesOfDeath2018: childData.state_statistic.all_causes_of_death_2018, 
 
     });
-    console.log("missing data...: ", this.state.medicaidExpansion)
-
   }
 
   render() {
@@ -140,6 +158,7 @@ export default class StatePolicyPage extends Component {
           <StatePropertyData propertyData={this.state} />
           <StateHealthCareData healthCareData={this.state} />
           <StateUnemploymentInsuranceData unemploymentData={this.state} />
+          <StateStatisticsData statisticsData={this.state} />
 
         </Container>
         {/* <Footer /> */}

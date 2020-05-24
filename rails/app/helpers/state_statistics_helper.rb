@@ -1,0 +1,2 @@
+module StateStatisticsHelper
+end
