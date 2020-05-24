@@ -87,8 +87,6 @@ export default class StatePolicyPage extends Component {
       shelterInPlaceStart: childData.shelter_in_place_start,
       shelterInPlaceEnd: childData.shelter_in_place_end,
       stateOfEmergency: childData.state_of_emergency,
-      updatedAt: childData.updated_at,
-      createdAt: childData.created_at,
 
       // business
       dayCaresClosedOn: childData.business.day_cares_closed,
@@ -149,16 +147,16 @@ export default class StatePolicyPage extends Component {
         />
         <Container>
          {/* pass the dropdown value from the StateSearch child back to this parent componenet  */}
-          <StateSearch parentCallback={this.callbackFunction} /> 
+          <StateSearch parentCallback={this.callbackFunction} /> <br />
 
           {/* populate the page with the JSON callback data */}
-          <StatePolicyData stateData={this.state} />
-          <StateFaceMaskData faceMaskData={this.state} />
-          <StateBusinessData businessData={this.state} />
-          <StatePropertyData propertyData={this.state} />
-          <StateHealthCareData healthCareData={this.state} />
-          <StateUnemploymentInsuranceData unemploymentData={this.state} />
-          <StateStatisticsData statisticsData={this.state} />
+          <StatePolicyData stateData={this.state} /><br />
+          <StateFaceMaskData faceMaskData={this.state} /><br />
+          <StateBusinessData businessData={this.state} /><br />
+          <StatePropertyData propertyData={this.state} /><br />
+          <StateHealthCareData healthCareData={this.state} /><br />
+          <StateUnemploymentInsuranceData unemploymentData={this.state} /><br />
+          <StateStatisticsData statisticsData={this.state} /><br />
 
         </Container>
         {/* <Footer /> */}

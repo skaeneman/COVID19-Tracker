@@ -8,9 +8,8 @@ export default function StateStatisticsData(props) {
           bg="light"
           text='dark'    
         >
-          <Card.Header>Statistics</Card.Header>
+          <Card.Header className="bg-info text-white">Statistics</Card.Header>
           <Card.Body>
-            <Card.Title>Statistics</Card.Title>
             <Card.Text as="span">
             <div>   
               <Row>
@@ -48,7 +47,6 @@ export default function StateStatisticsData(props) {
             </div>
             </Card.Text>
           </Card.Body>
-          <Card.Footer className="text-muted"></Card.Footer>
         </Card>        
     </div>
   )

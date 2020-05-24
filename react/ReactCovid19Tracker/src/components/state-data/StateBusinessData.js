@@ -4,13 +4,9 @@ import { Card, Row, Col } from 'react-bootstrap';
 export default function StateBusinessData(props) {  
   return (
     <div>
-        <Card className="text-center"
-          bg="light"
-          text='dark'    
-        >
-          <Card.Header>Business Data</Card.Header>
+        <Card className="text-center" bg="light" text='dark' >
+          <Card.Header className="bg-info text-white"><b>Businesses</b></Card.Header>
           <Card.Body>
-            <Card.Title>Business Data</Card.Title>
             <Card.Text as="span">
             <div>   
             <Row>
@@ -20,7 +16,6 @@ export default function StateBusinessData(props) {
             </div>
             </Card.Text>
           </Card.Body>
-          <Card.Footer className="text-muted"></Card.Footer>
         </Card>       
     </div>
   )

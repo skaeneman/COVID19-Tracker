@@ -8,9 +8,8 @@ export default function StateUnemploymentInsuranceData(props) {
           bg="light"
           text='dark'    
         >
-          <Card.Header>Unemployment Insurance</Card.Header>
+          <Card.Header className="bg-info text-white">Unemployment Insurance</Card.Header>
           <Card.Body>
-            <Card.Title>Unemployment Insurance</Card.Title>
             <Card.Text as="span">
             <div>   
               <Row>
@@ -44,7 +43,6 @@ export default function StateUnemploymentInsuranceData(props) {
             </div>
             </Card.Text>
           </Card.Body>
-          <Card.Footer className="text-muted"></Card.Footer>
         </Card>         
     </div>
   )

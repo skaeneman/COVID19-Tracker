@@ -29,7 +29,7 @@ export default function StateSearch(props) {
 
   // the dropdown select box for states.
   return (
-    <div>
+    <div className="search-margin">
       <Select 
         options={statesJSON}
         placeholder="Select a State"

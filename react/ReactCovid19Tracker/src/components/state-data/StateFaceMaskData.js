@@ -4,13 +4,9 @@ import { Card, Row, Col } from 'react-bootstrap';
 export default function StateFaceMaskData(props) {  
   return (
     <div>
-        <Card className="text-center"
-          bg="light"
-          text='dark'    
-        >
-          <Card.Header>Face Mask Data</Card.Header>
+        <Card className="text-center" bg="light" text='dark' >
+          <Card.Header className="bg-info text-white">Face Mask Data</Card.Header>
           <Card.Body>
-            <Card.Title>face Mask Data</Card.Title>
             <Card.Text as="span">
             <div>   
               <Row>
@@ -24,7 +20,6 @@ export default function StateFaceMaskData(props) {
             </div>
             </Card.Text>
           </Card.Body>
-          <Card.Footer className="text-muted"></Card.Footer>
         </Card>       
     </div>
   )

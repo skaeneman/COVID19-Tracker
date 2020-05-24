@@ -8,9 +8,8 @@ export default function StatePropertyData(props) {
           bg="light"
           text='dark'    
         >
-          <Card.Header>Property Data</Card.Header>
+          <Card.Header className="bg-info text-white">Property Data</Card.Header>
           <Card.Body>
-            <Card.Title>Property Data</Card.Title>
             <Card.Text as="span">
             <div>   
               <Row>
@@ -36,7 +35,6 @@ export default function StatePropertyData(props) {
             </div>
             </Card.Text>
           </Card.Body>
-          <Card.Footer className="text-muted"></Card.Footer>
         </Card>        
     </div>
   )
