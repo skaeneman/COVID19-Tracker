@@ -7,7 +7,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import NavLink from 'react-bootstrap/NavLink';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import Home from './Home';
+import Home from './pages/Home';
 import Dashboard from './Dashboard';
 
 

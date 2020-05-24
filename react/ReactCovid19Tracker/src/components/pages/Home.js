@@ -1,20 +1,20 @@
 import React, { Component, useEffect } from 'react'
-import Registration from './auth/Registration'
-import Login from './auth/Login';
-import Navigation from './Navigation';
+import Registration from '../auth/Registration'
+import Login from '../auth/Login';
+import Navigation from '../Navigation';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import StateSearch from './search/StateSearch';
-import Footer from './Footer';
-import { fetchData } from '../api/';
-import InfectedCard from './cards/InfectedCard';
-import DeathCard from './cards/DeathCard';
-import RecoveredCard from './cards/RecoveredCard';
-import HomeDataAnimations from './HomeDataAnimations';
-import '../style/home.css'
+import StateSearch from '../search/StateSearch';
+import Footer from '../Footer';
+import { fetchData } from '../../api';
+import InfectedCard from '../cards/InfectedCard';
+import DeathCard from '../cards/DeathCard';
+import RecoveredCard from '../cards/RecoveredCard';
+import HomeDataAnimations from '../HomeDataAnimations';
+import '../../style/home.css'
 
 export default class Home extends Component {
   constructor(props) {

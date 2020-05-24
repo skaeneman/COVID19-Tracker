@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import StateSearch from '../search/StateSearch';
 import Footer from '../Footer';
-import Home from '../Home';
+import Home from '../pages/Home';
 import '../../style/login.css';
 import '../../style/main.scss';
 

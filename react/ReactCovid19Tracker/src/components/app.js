@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'babel-polyfill';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
-import Home from './Home';
+import Home from './pages/Home';
 import Dashboard from './Dashboard';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
