@@ -1,0 +1,57 @@
+<%= form_with(model: unemployment_insurance, local: true) do |form| %>
+  <% if unemployment_insurance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(unemployment_insurance.errors.count, "error") %> prohibited this unemployment_insurance from being saved:</h2>
+
+      <ul>
+        <% unemployment_insurance.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_policy_id %>
+    <%= form.text_field :user_policy_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :no_ui_waiting_period %>
+    <%= form.check_box :no_ui_waiting_period %>
+  </div>
+
+  <div class="field">
+    <%= form.label :waived_ui_waiting_period %>
+    <%= form.date_select :waived_ui_waiting_period %>
+  </div>
+
+  <div class="field">
+    <%= form.label :waived_work_search_for_ui %>
+    <%= form.check_box :waived_work_search_for_ui %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expand_ui_to_quarantined_people %>
+    <%= form.check_box :expand_ui_to_quarantined_people %>
+  </div>
+
+  <div class="field">
+    <%= form.label :expand_ui_for_lost_childcare_or_school_closures %>
+    <%= form.check_box :expand_ui_for_lost_childcare_or_school_closures %>
+  </div>
+
+  <div class="field">
+    <%= form.label :extended_time_for_people_on_ui %>
+    <%= form.check_box :extended_time_for_people_on_ui %>
+  </div>
+
+  <div class="field">
+    <%= form.label :paid_sick_leave %>
+    <%= form.check_box :paid_sick_leave %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

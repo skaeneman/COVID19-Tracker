@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Unemployment Insurances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User policy</th>
+      <th>No ui waiting period</th>
+      <th>Waived ui waiting period</th>
+      <th>Waived work search for ui</th>
+      <th>Expand ui to quarantined people</th>
+      <th>Expand ui for lost childcare or school closures</th>
+      <th>Extended time for people on ui</th>
+      <th>Paid sick leave</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @unemployment_insurances.each do |unemployment_insurance| %>
+      <tr>
+        <td><%= unemployment_insurance.user_policy_id %></td>
+        <td><%= unemployment_insurance.no_ui_waiting_period %></td>
+        <td><%= unemployment_insurance.waived_ui_waiting_period %></td>
+        <td><%= unemployment_insurance.waived_work_search_for_ui %></td>
+        <td><%= unemployment_insurance.expand_ui_to_quarantined_people %></td>
+        <td><%= unemployment_insurance.expand_ui_for_lost_childcare_or_school_closures %></td>
+        <td><%= unemployment_insurance.extended_time_for_people_on_ui %></td>
+        <td><%= unemployment_insurance.paid_sick_leave %></td>
+        <td><%= link_to 'Show', unemployment_insurance %></td>
+        <td><%= link_to 'Edit', edit_unemployment_insurance_path(unemployment_insurance) %></td>
+        <td><%= link_to 'Destroy', unemployment_insurance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Unemployment Insurance', new_unemployment_insurance_path %>

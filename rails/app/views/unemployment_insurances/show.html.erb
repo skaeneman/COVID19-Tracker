@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User policy:</strong>
+  <%= @unemployment_insurance.user_policy_id %>
+</p>
+
+<p>
+  <strong>No ui waiting period:</strong>
+  <%= @unemployment_insurance.no_ui_waiting_period %>
+</p>
+
+<p>
+  <strong>Waived ui waiting period:</strong>
+  <%= @unemployment_insurance.waived_ui_waiting_period %>
+</p>
+
+<p>
+  <strong>Waived work search for ui:</strong>
+  <%= @unemployment_insurance.waived_work_search_for_ui %>
+</p>
+
+<p>
+  <strong>Expand ui to quarantined people:</strong>
+  <%= @unemployment_insurance.expand_ui_to_quarantined_people %>
+</p>
+
+<p>
+  <strong>Expand ui for lost childcare or school closures:</strong>
+  <%= @unemployment_insurance.expand_ui_for_lost_childcare_or_school_closures %>
+</p>
+
+<p>
+  <strong>Extended time for people on ui:</strong>
+  <%= @unemployment_insurance.extended_time_for_people_on_ui %>
+</p>
+
+<p>
+  <strong>Paid sick leave:</strong>
+  <%= @unemployment_insurance.paid_sick_leave %>
+</p>
+
+<%= link_to 'Edit', edit_unemployment_insurance_path(@unemployment_insurance) %> |
+<%= link_to 'Back', unemployment_insurances_path %>
