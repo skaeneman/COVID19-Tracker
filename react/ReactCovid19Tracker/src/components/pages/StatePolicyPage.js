@@ -10,6 +10,8 @@ import StateFaceMaskData from '../state-data/StateFaceMaskData';
 import StateBusinessData from '../state-data/StateBusinessData'
 import StatePropertyData from '../state-data/StatePropertyData';
 import StateHealthCareData from '../state-data/StateHealthCareData';
+import StateUnemploymentInsuranceData from '../state-data/StateUnemploymentInsuranceData';
+
 
 export default class StatePolicyPage extends Component {
   constructor(props) {
@@ -49,6 +51,15 @@ export default class StatePolicyPage extends Component {
       madeEffortsToLimitAbortions: false,
       limitAbortionDetails: '',
       medicaidExpansion: false,
+
+      // unemployment insurance
+      noUiWaitingPeriod: '',
+      waivedUiWaitingPeriod: '',
+      waivedWorkSearchForUi: '',
+      expandUiToQuarantinedPeople: '',
+      expandUiForLostChildcareOrSchoolClosures: '',
+      extendedTimeForPeopleOnUi: '',
+      paidSickLeave: '',
 
     }    
   }
@@ -93,6 +104,17 @@ export default class StatePolicyPage extends Component {
       madeEffortsToLimitAbortions: childData.health_care.made_efforts_to_limit_abortions,
       limitAbortionDetails: childData.health_care.limit_abortion_details,
       medicaidExpansion: childData.health_care.medicaid_expansion,
+
+      // unemployment insurance
+      noUiWaitingPeriod: childData.unemployment_insurance.no_ui_waiting_period,
+      waivedUiWaitingPeriod: childData.unemployment_insurance.waived_ui_waiting_period,
+      waivedWorkSearchForUi: childData.unemployment_insurance.waived_work_search_for_ui,
+      expandUiToQuarantinedPeople: childData.unemployment_insurance.expand_ui_to_quarantined_people,
+      expandUiForLostChildcareOrSchoolClosures: childData.unemployment_insurance.expand_ui_for_lost_childcare_or_school_closures,
+      extendedTimeForPeopleOnUi: childData.unemployment_insurance.extended_time_for_people_on_ui,
+      paidSickLeave: childData.unemployment_insurance.paid_sick_leave,      
+
+
     });
     console.log("missing data...: ", this.state.medicaidExpansion)
 
@@ -117,6 +139,7 @@ export default class StatePolicyPage extends Component {
           <StateBusinessData businessData={this.state} />
           <StatePropertyData propertyData={this.state} />
           <StateHealthCareData healthCareData={this.state} />
+          <StateUnemploymentInsuranceData unemploymentData={this.state} />
 
         </Container>
         {/* <Footer /> */}
