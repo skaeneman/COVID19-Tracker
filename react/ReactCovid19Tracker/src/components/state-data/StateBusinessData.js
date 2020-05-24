@@ -4,8 +4,8 @@ import { Card, Row, Col } from 'react-bootstrap';
 export default function StateBusinessData(props) {  
   return (
     <div>
-        <Card className="text-center" bg="light" text='dark' >
-          <Card.Header className="bg-info text-white"><b>Businesses</b></Card.Header>
+        <Card className="text-left" bg="light" text='dark' >
+          <Card.Header className="alert alert-dark">Businesses</Card.Header>
           <Card.Body>
             <Card.Text as="span">
             <div>   

@@ -149,15 +149,19 @@ export default class StatePolicyPage extends Component {
          {/* pass the dropdown value from the StateSearch child back to this parent componenet  */}
           <StateSearch parentCallback={this.callbackFunction} /> <br />
 
-          {/* populate the page with the JSON callback data */}
-          <StatePolicyData stateData={this.state} /><br />
-          <StateFaceMaskData faceMaskData={this.state} /><br />
-          <StateBusinessData businessData={this.state} /><br />
-          <StatePropertyData propertyData={this.state} /><br />
-          <StateHealthCareData healthCareData={this.state} /><br />
-          <StateUnemploymentInsuranceData unemploymentData={this.state} /><br />
-          <StateStatisticsData statisticsData={this.state} /><br />
-
+          { (this.state.id)                     
+            ? <div>
+                {/* populate the page with the JSON callback data */}
+                <StatePolicyData stateData={this.state} /><br />
+                <StateFaceMaskData faceMaskData={this.state} /><br />
+                <StateBusinessData businessData={this.state} /><br />
+                <StatePropertyData propertyData={this.state} /><br />
+                <StateHealthCareData healthCareData={this.state} /><br />
+                <StateUnemploymentInsuranceData unemploymentData={this.state} /><br />
+                <StateStatisticsData statisticsData={this.state} /><br />
+              </div>
+            : <div className="text-white">Select a state from the dropdown above to see data related to COVID-19 legislation.</div>
+          }
         </Container>
         {/* <Footer /> */}
       </div>

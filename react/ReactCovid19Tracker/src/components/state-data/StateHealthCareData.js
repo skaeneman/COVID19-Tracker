@@ -6,8 +6,8 @@ export default function StateHealthCareData(props) {
 
   return (
     <div>
-        <Card className="text-center" bg="light" text='dark' >
-          <Card.Header className="bg-info text-white">Health Care Data</Card.Header>
+        <Card className="text-left" bg="light" text='dark' >
+          <Card.Header className="alert alert-dark">Health Care Data</Card.Header>
           <Card.Body>
             <Card.Text as="span">
             <div>

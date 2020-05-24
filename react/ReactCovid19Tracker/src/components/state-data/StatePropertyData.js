@@ -4,11 +4,11 @@ import { Card, Row, Col } from 'react-bootstrap';
 export default function StatePropertyData(props) {
   return (
     <div>
-        <Card className="text-center"
+        <Card className="text-left"
           bg="light"
           text='dark'    
         >
-          <Card.Header className="bg-info text-white">Property Data</Card.Header>
+          <Card.Header className="alert alert-dark">Property Data</Card.Header>
           <Card.Body>
             <Card.Text as="span">
             <div>   

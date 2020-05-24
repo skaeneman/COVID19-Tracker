@@ -4,11 +4,11 @@ import { Card, Row, Col } from 'react-bootstrap';
 export default function StateStatisticsData(props) {
   return (
     <div>
-        <Card className="text-center"
+        <Card className="text-left"
           bg="light"
           text='dark'    
         >
-          <Card.Header className="bg-info text-white">Statistics</Card.Header>
+          <Card.Header className="alert alert-dark">Statistics</Card.Header>
           <Card.Body>
             <Card.Text as="span">
             <div>   

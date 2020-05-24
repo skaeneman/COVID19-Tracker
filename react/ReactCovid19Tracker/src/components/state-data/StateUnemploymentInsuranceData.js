@@ -4,11 +4,11 @@ import { Card, Row, Col } from 'react-bootstrap';
 export default function StateUnemploymentInsuranceData(props) {
   return (
     <div>
-        <Card className="text-center"
+        <Card className="text-left"
           bg="light"
           text='dark'    
         >
-          <Card.Header className="bg-info text-white">Unemployment Insurance</Card.Header>
+          <Card.Header className="alert alert-dark">Unemployment Insurance</Card.Header>
           <Card.Body>
             <Card.Text as="span">
             <div>   
