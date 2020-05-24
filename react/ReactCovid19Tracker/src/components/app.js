@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'babel-polyfill';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import Home from './pages/Home';
 import Dashboard from './Dashboard';
@@ -54,6 +54,7 @@ export default class App extends Component {
     // deletes the session
     axios.delete("http://localhost:3001/logout", { withCredentials: true })
     .then(response => {
+      location.href = "/" // redirect to home page
       this.handleLogout(); // set state in react to logged out
     }).catch(error => {
       console.log("error logging out:", error);
