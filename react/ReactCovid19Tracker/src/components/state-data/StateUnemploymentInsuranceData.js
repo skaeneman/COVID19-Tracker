@@ -14,31 +14,31 @@ export default function StateUnemploymentInsuranceData(props) {
             <Card.Text as="span">
             <div>   
               <Row>
-                <Col xs="2" className="text-left">No UI Waiting Period</Col>
+                <Col xs="4" className="text-left">No UI Waiting Period</Col>
                 <Col className="text-left">{ props.unemploymentData.noUiWaitingPeriod }</Col>  
               </Row>      
               <Row>
-                <Col xs="2" className="text-left">Waived UI Waiting Period</Col>
+                <Col xs="4" className="text-left">Waived UI Waiting Period</Col>
                 <Col className="text-left">{ props.unemploymentData.waivedUiWaitingPeriod }</Col>  
               </Row>  
               <Row>
-                <Col xs="2" className="text-left">Waived Work Search For UI</Col>
+                <Col xs="4" className="text-left">Waived Work Search For UI</Col>
                 <Col className="text-left">{ props.unemploymentData.waivedWorkSearchForUi }</Col>  
               </Row>  
               <Row>
-                <Col xs="2" className="text-left">Expand UI To Quarantined People</Col>
+                <Col xs="4" className="text-left">Expand UI To Quarantined People</Col>
                 <Col className="text-left">{ props.unemploymentData.expandUiToQuarantinedPeople }</Col>  
               </Row>  
               <Row>
-                <Col xs="2" className="text-left">Expand UI For Lost Childcare Or School Closures</Col>
+                <Col xs="4" className="text-left">Expand UI For Lost Childcare Or School Closures</Col>
                 <Col className="text-left">{ props.unemploymentData.expandUiForLostChildcareOrSchoolClosures }</Col>  
               </Row>  
               <Row>
-                <Col xs="2" className="text-left">Extended Time For People On UI</Col>
+                <Col xs="4" className="text-left">Extended Time For People On UI</Col>
                 <Col className="text-left">{ props.unemploymentData.extendedTimeForPeopleOnUi }</Col>  
               </Row>  
               <Row>
-                <Col xs="2" className="text-left">Paid Sick Leave</Col>
+                <Col xs="4" className="text-left">Paid Sick Leave</Col>
                 <Col className="text-left">{ props.unemploymentData.paidSickLeave }</Col>  
               </Row>                                                                                                    
             </div>
