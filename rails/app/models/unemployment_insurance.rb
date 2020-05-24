@@ -1,3 +1,3 @@
 class UnemploymentInsurance < ApplicationRecord
-  belongs_to :user_policy
+  belongs_to :state_policy
 end

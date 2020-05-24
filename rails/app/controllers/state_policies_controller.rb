@@ -19,6 +19,7 @@ class StatePoliciesController < ApplicationController
                               .includes(:face_mask)
                               .includes(:property)
                               .includes(:health_care)
+                              .includes(:unemployment_insurance)
                               .find_by(state_name: params[:state])
 
     # state_policy = StatePolicy.get_state_data(params[:state])
@@ -28,7 +29,8 @@ class StatePoliciesController < ApplicationController
 
     respond_to do |format|
       if state_policy        
-        format.json { render json: state_policy.to_json( include: [:business, :face_mask, :property, :health_care], status: 200 ) }
+        format.json { render json: state_policy.to_json( include: [:business, :face_mask, :property, 
+          :health_care, :unemployment_insurance], status: 200 ) }
       else
         format.json { render json: "No data available for #{params[:state]}" }
       end
