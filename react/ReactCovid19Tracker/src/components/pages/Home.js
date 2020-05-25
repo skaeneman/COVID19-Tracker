@@ -1,7 +1,6 @@
 import React, { Component, useEffect } from 'react'
 import Registration from '../auth/Registration'
 import Login from '../auth/Login';
-import Navigation from '../Navigation';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -37,13 +36,6 @@ export default class Home extends Component {
 
     return (
       <div className="home-background">
-         {/* create the isLoggedIn prop and pass it to the Navigation componenet */}
-        <Navigation 
-          isLoggedIn={this.props.loggedInStatus} 
-          user={this.props.user}
-          handleLogoutClick={this.props.handleLogoutClick} 
-          handleLogout={this.props.handleLogout} 
-        />
         <Container>
           <br />
           <Row>

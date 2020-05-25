@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navigation from '../Navigation';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -139,12 +138,6 @@ export default class StatePolicyPage extends Component {
   render() {
     return (
       <div>
-        <Navigation 
-          isLoggedIn={this.props.loggedInStatus} 
-          user={this.props.user}
-          handleLogoutClick={this.props.handleLogoutClick} 
-          handleLogout={this.props.handleLogout} 
-        />
         <Container>
          {/* pass the dropdown value from the StateSearch child back to this parent componenet  */}
           <StateSearch parentCallback={this.callbackFunction} /> <br />

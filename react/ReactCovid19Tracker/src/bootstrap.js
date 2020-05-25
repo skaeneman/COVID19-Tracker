@@ -9,6 +9,7 @@ import reducers from "./reducers";
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 import "./style/main.scss";
+import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 
 // Importing the Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';

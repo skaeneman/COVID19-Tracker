@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Registration from '../auth/Registration'
 import Login from '../auth/Login';
-import Navigation from '../Navigation';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -22,10 +21,7 @@ export default class RegistrationPage extends Component {
   }
   
   handleSuccessfulAuth(data) {
-    console.log("Reg Page handleSuccessfulAuth...");
     this.props.handleLogin(data);
-    console.log("data...", data);
-    // this.props.data
     this.props.history.push("/");
   }
   
@@ -34,12 +30,6 @@ export default class RegistrationPage extends Component {
 
     return (
       <div className="dark-background">
-        <Navigation 
-          isLoggedIn={this.props.loggedInStatus} 
-          handleLogoutClick={this.props.handleLogoutClick} 
-          handleLogout={this.props.handleLogout} 
-          handleSuccessfulAuth={this.handleSuccessfulAuth}
-        />
         <Container>
           <Row>
             <Col>

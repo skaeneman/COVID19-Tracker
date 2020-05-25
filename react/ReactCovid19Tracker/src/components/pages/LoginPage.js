@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Registration from '../auth/Registration'
 import Login from '../auth/Login';
-import Navigation from '../Navigation';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -31,9 +30,6 @@ export default class LoginPage extends Component {
   render() {
     return (
       <div className="dark-background">
-        <Navigation 
-          isLoggedIn={this.props.loggedInStatus} 
-        />
         <Container>
           <Row>
             <Col>

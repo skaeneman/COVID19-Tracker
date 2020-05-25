@@ -7,6 +7,7 @@ import Dashboard from './Dashboard';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
 import StatePolicyPage from './pages/StatePolicyPage';
+import Navigation from '../components/Navigation';
 
 export default class App extends Component {
 
@@ -84,6 +85,12 @@ export default class App extends Component {
   render() {
     return (
       <div className='app'>
+        <Navigation 
+          isLoggedIn={this.state.loggedInStatus} 
+          user={this.state.user}
+          handleLogoutClick={this.handleLogoutClick} 
+          handleLogout={this.handleLogout} 
+        />        
         <BrowserRouter>
           <Switch>
           <Route
@@ -95,6 +102,7 @@ export default class App extends Component {
                   handleLogout={this.handleLogout}
                   handleLogoutClick={this.handleLogoutClick}
                   loggedInStatus={this.state.loggedInStatus}
+                  user={this.state.user}
                 />
               )}
             />
@@ -105,6 +113,7 @@ export default class App extends Component {
                 <Dashboard
                   {...props}
                   loggedInStatus={this.state.loggedInStatus}
+                  user={this.state.user}
                 />
               )}
             />
@@ -118,6 +127,7 @@ export default class App extends Component {
                   handleLogout={this.handleLogout}
                   handleLogoutClick={this.handleLogoutClick}
                   loggedInStatus={this.state.loggedInStatus}
+                  user={this.state.user}
                 />
               )}
             />     
@@ -144,6 +154,7 @@ export default class App extends Component {
                   handleLogout={this.handleLogout}
                   handleLogoutClick={this.handleLogoutClick}
                   loggedInStatus={this.state.loggedInStatus}
+                  user={this.state.user}
                 />
               )}
             />                               

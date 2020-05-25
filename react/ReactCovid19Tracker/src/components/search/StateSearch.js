@@ -3,6 +3,7 @@ import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
 import axios from 'axios';
 import statesJSON from '../../helpers/states'; 
+// import makeAnimated from 'react-select/animated';
 
 // uses the 'react-select' package
 export default function StateSearch(props) {
@@ -10,6 +11,9 @@ export default function StateSearch(props) {
 
   useEffect(() => {
     // if a state was selected from the dropdown
+
+    console.log("state....", americanState);
+
     if (americanState) {
       axios.get("http://localhost:3001/state_policies/get_state_policy", {
         params: {
@@ -36,8 +40,8 @@ export default function StateSearch(props) {
         onChange={setAmericanState}
         noOptionsMessage={() => 'Uh-oh nothing matches your search'}
         className=""
-        // components={makeAnimated()}
-        components={() => makeAnimated()}
+        // isMulti
+        // components={animatedComponents}
         isSearchable
         isClearable={true}
       />

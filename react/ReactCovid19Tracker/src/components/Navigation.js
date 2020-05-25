@@ -13,9 +13,6 @@ import Dashboard from './Dashboard';
 
 export default class Navigation extends Component {
   render() {
-
-    // console.log("nav... ", this.props);
-
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Brand href="/">COVID-19 Legislation Tracker</Navbar.Brand>
@@ -36,10 +33,14 @@ export default class Navigation extends Component {
               <Nav.Link href="/login">Login</Nav.Link> 
               <Nav.Link eventKey={2} href="/signup">Sign Up </Nav.Link> 
             </Nav> 
-          : 
-            <Nav> 
-              <Nav.Link onClick={() => this.props.handleLogoutClick()}>Logout</Nav.Link>
-            </Nav> 
+          :
+          <Nav className=""> 
+            <NavDropdown title={this.props.user.first_name} id="collasible-nav-dropdown"><i className="fa fa-lock"></i>
+              <NavDropdown.Item href="/states">User Profile</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item onClick={() => this.props.handleLogoutClick()}>Logout</NavDropdown.Item>
+            </NavDropdown>            
+          </Nav> 
           }               
         </Navbar.Collapse>
       </Navbar>

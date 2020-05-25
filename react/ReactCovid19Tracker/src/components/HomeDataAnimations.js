@@ -1,7 +1,6 @@
 import React, { Component, useEffect } from 'react'
 import Registration from './auth/Registration'
 import Login from './auth/Login';
-import Navigation from './Navigation';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
