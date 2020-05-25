@@ -34,9 +34,9 @@ export default class Navigation extends Component {
               <Nav.Link eventKey={2} href="/signup">Sign Up </Nav.Link> 
             </Nav> 
           :
-          <Nav className=""> 
-            <NavDropdown title={this.props.user.first_name} id="collasible-nav-dropdown"><i className="fa fa-lock"></i>
-              <NavDropdown.Item href="/states">User Profile</NavDropdown.Item>
+          <Nav> 
+            <NavDropdown alignRight title={this.props.user.first_name} id="collasible-nav-dropdown" className="">
+              <NavDropdown.Item href="/profile">User Profile</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item onClick={() => this.props.handleLogoutClick()}>Logout</NavDropdown.Item>
             </NavDropdown>            

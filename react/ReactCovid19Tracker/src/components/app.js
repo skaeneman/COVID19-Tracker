@@ -8,6 +8,8 @@ import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
 import StatePolicyPage from './pages/StatePolicyPage';
 import Navigation from '../components/Navigation';
+import Container from 'react-bootstrap/Container';
+
 
 export default class App extends Component {
 
@@ -90,7 +92,7 @@ export default class App extends Component {
           user={this.state.user}
           handleLogoutClick={this.handleLogoutClick} 
           handleLogout={this.handleLogout} 
-        />        
+        />    
         <BrowserRouter>
           <Switch>
           <Route
