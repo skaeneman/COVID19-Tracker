@@ -1,4 +1,4 @@
-# run by doing:  bundle exec rails import_covid_spreadsheet:data
+# run by doing:  bundle exec rails import_covid_spreadsheet:data in the console
 
 namespace :import_covid_spreadsheet do
   desc "Import data from BU COVID spreadsheet"
@@ -11,32 +11,43 @@ namespace :import_covid_spreadsheet do
     # get the header row
     headers = data.row(1) 
 
-    # iterate over spreadsheet rows
-    for i in 2..data.last_row
-      puts "col 1 : #{data.row(i)[1]}"
-      puts "col 2 : #{data.row(i)[2]}"
+    # for i in 2..data.last_row     
+    for i in 2..52     
+      # map the StatePolicy table
+      # puts "State Policy database table being mapped..."
+      # puts "mapping col A(0) State to StatePolicy state_name col: #{data.row(i)[0]}"
+      # puts "mapping col A(1) State of emergency to StatePolicy state_of_emergency col: #{data.row(i)[1]}"
+      # puts "mapping col A(2) Date closed K-12 schools to StatePolicy state_of_emergency col: #{data.row(i)[2]}"
+      # puts "mapping col F(6) End/relax stay at home/shelter in place to StatePolicy shelter_in_place_start col: #{data.row(i)[5]}"
+      # puts "mapping col G(7) Stay at home/shelter in place to StatePolicy shelter_in_place_end col: #{data.row(i)[6]}"   
 
-      # Table.create(first_name: @xls.row(i)[1],last_name: @xls.row(i)[2],..)
+      if StatePolicy.exists?(state_name: data.row(i)[0])
+        puts "State with name #{data.row(i)[0]} already exists"
+        next
+      else
+        # puts "Creating state entry for: #{data.row(i)[0]}"
+        col1 = data.row(i)[1]
+        col2 = data.row(i)[2]
+        col5 = data.row(i)[5]
+        col6 = data.row(i)[6]
+
+        # there are values listed as '0' for dates in the spreadsheet that must be changed to nil
+        col1 == 0.0 ? col1 = nil : col1 = data.row(i)[1]
+        col2 == 0.0 ? col2 = nil : col2 = data.row(i)[2]
+        col5 == 0.0 ? col5 = nil : col5 = data.row(i)[5]
+        col6 == 0.0 ? col6 = nil : col6 = data.row(i)[6]
+
+        puts "data.row(i)[1]: #{col1}"
+        puts "data.row(i)[2]: #{col2}"
+        puts "data.row(i)[5]: #{col5}"
+        puts "data.row(i)[6]: #{col6}"
+
+        StatePolicy.create!(state_name: data.row(i)[0], state_of_emergency: col1, k_12_schools_closed: col2, shelter_in_place_start: col5, shelter_in_place_end: col6)
+      end
     end
 
-    # data.each_with_index do |row, idx|
-    #   next if idx == 0 # skip the header row
-     
-    #   # create a hash from the headers and cells
-    #   user_data = Hash[[headers, row].transpose]
+    # FaceMask.create(mandate_use_for_everyone: @xls.row(i)[1],mandate_use_for_employees_of_public_facing_businesses: @xls.row(i)[2], state_policy_id:)
 
-    #   puts "data: #{user_data}"
-
-    #   # next if data already exists
-    #   # if User.exists?(email: user_data['email'])
-    #   #   puts "User with email #{user_data['email']} already exists"
-    #   #   next
-    #   # end
-      
-    #   # user = User.new(user_data)
-    #   # puts "Saving User with email '#{user.email}'"
-    #   # user.save!
-    # end
 
 
   end
