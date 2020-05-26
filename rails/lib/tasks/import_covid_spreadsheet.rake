@@ -99,9 +99,29 @@ namespace :import_covid_spreadsheet do
         col19 == 0.0 ? col19 = nil : col19 = data.row(i)[19]
         col20 == 0.0 ? col20 = nil : col20 = data.row(i)[20]
 
-        Business.create!(state_policy_id: state.id, day_cares_closed: col3, nursing_home_visitors_banned: col4, non_essential_businesses_closed: col7, 
+        Business.create(state_policy_id: state.id, day_cares_closed: col3, nursing_home_visitors_banned: col4, non_essential_businesses_closed: col7, 
         reopen_businesses: col8, religious_gatherings_exempt: col9, firearm_retailers_open: col13, liquor_stores_open: col12, closed_restaurants_except_take_out: col14, 
         reopen_restaurants: col15, closed_gyms: col17, reopened_gyms: col18, closed_movie_theaters: col19, reopened_movie_theaters: col20)
+
+       ###############################################################################
+        #  Property table
+        ###############################################################################   
+        puts "populating the Property table"
+
+        col21 = data.row(i)[21] # Stop Initiation of Evictions overall or due to COVID related issues
+        col22 = data.row(i)[22] # Stop enforcement of evictions overall or due to COVID related issues
+        col23 = data.row(i)[23] # Renter grace period or use of security deposit to pay rent
+        col24 = data.row(i)[24] # Order freezing utility shut offs
+        col25 = data.row(i)[25] # Froze mortgage payments
+
+        col21 == 0.0 ? col21 = nil : col21 = data.row(i)[21]
+        col22 == 0.0 ? col22 = nil : col22 = data.row(i)[22]
+        col23 == 0.0 ? col23 = nil : col23 = data.row(i)[23]
+        col24 == 0.0 ? col24 = nil : col24 = data.row(i)[24]
+        col25 == 0.0 ? col25 = nil : col25 = data.row(i)[25]
+
+        Property.create(state_policy_id: state.id, stop_initiating_evictions: col21, stop_enforcing_evictions: col22, 
+          grace_period_or_security_deposit_towards_rent: col23, froze_utility_shut_offs: col24, froze_mortgage_payments: col25)
 
        ###############################################################################
         #  table
@@ -120,7 +140,6 @@ namespace :import_covid_spreadsheet do
         # col == 0.0 ? col = nil : col = data.row(i)[]
         # col == 0.0 ? col = nil : col = data.row(i)[]
         # col == 0.0 ? col = nil : col = data.row(i)[]
-
 
       end
     end
