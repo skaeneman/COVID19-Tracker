@@ -28,7 +28,7 @@ namespace :import_covid_spreadsheet do
         ###############################################################################
         # State Policy table
         ###############################################################################            
-        puts "populating the State Policy table"
+        puts "State Policy table inserting row... #{data.row(i)}"
 
         # puts "Creating state entry for: #{data.row(i)[0]}"
         col1 = data.row(i)[1]
@@ -55,7 +55,7 @@ namespace :import_covid_spreadsheet do
         ###############################################################################
         # Face Masks table
         ###############################################################################    
-        puts "populating the Face Mask table"    
+        puts "Face Mask table inserting row... #{data.row(i)}"    
         col10 = data.row(i)[10]
         col11 = data.row(i)[11]
 
@@ -68,7 +68,7 @@ namespace :import_covid_spreadsheet do
         ###############################################################################
         # Business table
         ###############################################################################   
-        puts "populating the Business table"
+        puts "Business table inserting row... #{data.row(i)}"
 
         col3 = data.row(i)[3] # Closed day cares
         col4 = data.row(i)[4] # Date banned visitors to nursing homes
@@ -106,7 +106,7 @@ namespace :import_covid_spreadsheet do
        ###############################################################################
         #  Property table
         ###############################################################################   
-        puts "populating the Property table"
+        puts "Property table inserting row... #{data.row(i)}"
 
         col21 = data.row(i)[21] # Stop Initiation of Evictions overall or due to COVID related issues
         col22 = data.row(i)[22] # Stop enforcement of evictions overall or due to COVID related issues
@@ -122,6 +122,36 @@ namespace :import_covid_spreadsheet do
 
         Property.create(state_policy_id: state.id, stop_initiating_evictions: col21, stop_enforcing_evictions: col22, 
           grace_period_or_security_deposit_towards_rent: col23, froze_utility_shut_offs: col24, froze_mortgage_payments: col25)
+
+
+        ###############################################################################
+        #  Health Care table
+        ###############################################################################   
+        puts "Health Care table inserting row... #{data.row(i)}"
+
+        col26 = data.row(i)[26] # Modify Medicaid requirements with 1135 waivers (date of CMS approval)
+        col27 = data.row(i)[27] # Reopened ACA enrollment using a special enrollment period
+        col28 = data.row(i)[28] # Allow audio-only telehealth
+        col29 = data.row(i)[29] # Allow/expand Medicaid telehealth coverage
+        col30 = data.row(i)[30] # Suspended elective medical/dental procedures
+        col31 = data.row(i)[31] # Resumed elective medical procedures
+        col38 = data.row(i)[38] # Made Effort to Limit Abortion Access (boolean)
+        col39 = data.row(i)[39] # Efforts to limit abortion access details
+        col47 = data.row(i)[47] # Medicaid Expansion (boolean)
+
+        col26 == 0.0 ? col26 = nil : col26 = data.row(i)[26]
+        col27 == 0.0 ? col27 = nil : col27 = data.row(i)[27]
+        col28.to_s.start_with?("0", "*") ? col28 = nil : col28 = data.row(i)[28] # has an asterisk in the column
+        col29 == 0.0 ? col29 = nil : col29 = data.row(i)[29]
+        col30 == 0.0 ? col30 = nil : col30 = data.row(i)[30]
+        col31 == 0.0 ? col31 = nil : col31 = data.row(i)[31]
+        # col38 == 0.0 ? col38 = nil : col38 = data.row(i)[38] boolean value so don't check for 0
+        col39.to_s.start_with?("0", "*") ? col39 = nil : col39 = data.row(i)[39]   
+        # col47 == 0.0 ? col47 = nil : col47 = data.row(i)[47] # boolean
+
+        HealthCare.create(state_policy_id: state.id, modify_medicaid_with_1135_waivers: col26, aca_special_enrollment_period: col27, audio_only_telehealth: col28, 
+          allow_or_expand_medicaid_telehealth: col29, suspended_elective_medical: col30, resumed_elective_medical: col31, made_efforts_to_limit_abortions: col38, 
+          limit_abortion_details: col39, medicaid_expansion: col47)
 
        ###############################################################################
         #  table
