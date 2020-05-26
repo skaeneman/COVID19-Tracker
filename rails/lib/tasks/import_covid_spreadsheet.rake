@@ -25,6 +25,9 @@ namespace :import_covid_spreadsheet do
         puts "State with name #{data.row(i)[0]} already exists"
         next
       else
+        ###############################################################################
+        # State Policy table
+        ###############################################################################            
         # puts "Creating state entry for: #{data.row(i)[0]}"
         col1 = data.row(i)[1]
         col2 = data.row(i)[2]
@@ -43,11 +46,23 @@ namespace :import_covid_spreadsheet do
         puts "data.row(i)[6]: #{col6}"
 
         StatePolicy.create!(state_name: data.row(i)[0], state_of_emergency: col1, k_12_schools_closed: col2, shelter_in_place_start: col5, shelter_in_place_end: col6)
+        
+        # get the state policy that was just created so you can use the id in other tables
+        state = StatePolicy.find_by(state_name: data.row(i)[0])
+
+        ###############################################################################
+        # Face Masks table
+        ###############################################################################        
+        col10 = data.row(i)[10]
+        col11 = data.row(i)[11]
+        
+        # there are values listed as '0' for dates in the spreadsheet that must be changed to nil
+        col10 == 0.0 ? col10 = nil : col10 = data.row(i)[10]
+        col11 == 0.0 ? col11 = nil : col11 = data.row(i)[11]
+
+        FaceMask.create(state_policy_id: state.id, mandate_use_for_everyone: col10, mandate_use_for_employees_of_public_facing_businesses: col11)
       end
     end
-
-    # FaceMask.create(mandate_use_for_everyone: @xls.row(i)[1],mandate_use_for_employees_of_public_facing_businesses: @xls.row(i)[2], state_policy_id:)
-
 
 
   end
