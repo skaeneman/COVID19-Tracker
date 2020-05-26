@@ -65,29 +65,38 @@ namespace :import_covid_spreadsheet do
         ###############################################################################
         # Business table
         ###############################################################################   
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
+        col3 = data.row(i)[3] # Closed day cares
+        col4 = data.row(i)[4] # Date banned visitors to nursing homes
+        col7 = data.row(i)[7] # Closed non-essential businesses
+        col8 = data.row(i)[8] # Began to reopen businesses statewide
+        col9 = data.row(i)[9] # Religious Gatherings Exempt Without Clear Social Distance Mandate 
+        col13 = data.row(i)[13] # Keep Firearms Sellers Open
+        col12 = data.row(i)[12] # Alcohol/Liquor Stores Open
+        col14 = data.row(i)[14] # Closed restaurants except take out
+        col15 = data.row(i)[15] # Reopen restaurants
+        col17 = data.row(i)[17] # Closed gyms
+        col18 = data.row(i)[18] # Reopened gyms
+        col19 = data.row(i)[19] # Closed movie theaters
+        col20 = data.row(i)[20] # Reopened movie theaters
+        
+        # handle the 0 entries in the spreadsheet
+        col3 == 0.0 ? col3 = nil : col3 = data.row(i)[3]
+        col4 == 0.0 ? col4 = nil : col4 = data.row(i)[4]
+        col7 == 0.0 ? col7 = nil : col7 = data.row(i)[7]
+        col8 == 0.0 ? col8 = nil : col8 = data.row(i)[8]
+        col9 == 0.0 ? col9 = nil : col9 = data.row(i)[9]
+        col13 == 0.0 ? col13 = nil : col13 = data.row(i)[13]
+        col12 == 0.0 ? col12 = nil : col12 = data.row(i)[12]
+        col14 == 0.0 ? col14 = nil : col14 = data.row(i)[14]
+        col15 == 0.0 ? col15 = nil : col15 = data.row(i)[15]
+        col17 == 0.0 ? col17 = nil : col17 = data.row(i)[17]
+        col18 == 0.0 ? col18 = nil : col18 = data.row(i)[18]
+        col19 == 0.0 ? col19 = nil : col19 = data.row(i)[19]
+        col20 == 0.0 ? col20 = nil : col20 = data.row(i)[20]
 
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]
-
-        Business.create!(state_policy_id: state.id, day_cares_closed:d, nursing_home_visitors_banned:d, non_essential_businesses_closed:d, 
-        reopen_businesses:d, religious_gatherings_exempt:true, firearm_retailers_open:true, liquor_stores_open:true, closed_restaurants_except_take_out:d, 
-        reopen_restaurants:d, closed_gyms:d, reopened_gyms:d, closed_movie_theaters:d, reopened_movie_theaters:d)
-
-
+        Business.create!(state_policy_id: state.id, day_cares_closed: col3, nursing_home_visitors_banned: col4, non_essential_businesses_closed: col7, 
+        reopen_businesses: col8, religious_gatherings_exempt: col9, firearm_retailers_open: col13, liquor_stores_open: col12, closed_restaurants_except_take_out: col14, 
+        reopen_restaurants: col15, closed_gyms: col17, reopened_gyms: col18, closed_movie_theaters: col19, reopened_movie_theaters: col20)
 
        ###############################################################################
         #  table
