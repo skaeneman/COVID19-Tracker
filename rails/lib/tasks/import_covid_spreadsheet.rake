@@ -55,12 +55,56 @@ namespace :import_covid_spreadsheet do
         ###############################################################################        
         col10 = data.row(i)[10]
         col11 = data.row(i)[11]
-        
+
         # there are values listed as '0' for dates in the spreadsheet that must be changed to nil
         col10 == 0.0 ? col10 = nil : col10 = data.row(i)[10]
         col11 == 0.0 ? col11 = nil : col11 = data.row(i)[11]
 
         FaceMask.create(state_policy_id: state.id, mandate_use_for_everyone: col10, mandate_use_for_employees_of_public_facing_businesses: col11)
+
+        ###############################################################################
+        # Business table
+        ###############################################################################   
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]
+
+        Business.create!(state_policy_id: state.id, day_cares_closed:d, nursing_home_visitors_banned:d, non_essential_businesses_closed:d, 
+        reopen_businesses:d, religious_gatherings_exempt:true, firearm_retailers_open:true, liquor_stores_open:true, closed_restaurants_except_take_out:d, 
+        reopen_restaurants:d, closed_gyms:d, reopened_gyms:d, closed_movie_theaters:d, reopened_movie_theaters:d)
+
+
+
+       ###############################################################################
+        #  table
+        ###############################################################################   
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]
+
+
       end
     end
 
