@@ -28,6 +28,8 @@ namespace :import_covid_spreadsheet do
         ###############################################################################
         # State Policy table
         ###############################################################################            
+        puts "populating the State Policy table"
+
         # puts "Creating state entry for: #{data.row(i)[0]}"
         col1 = data.row(i)[1]
         col2 = data.row(i)[2]
@@ -40,10 +42,10 @@ namespace :import_covid_spreadsheet do
         col5 == 0.0 ? col5 = nil : col5 = data.row(i)[5]
         col6 == 0.0 ? col6 = nil : col6 = data.row(i)[6]
 
-        puts "data.row(i)[1]: #{col1}"
-        puts "data.row(i)[2]: #{col2}"
-        puts "data.row(i)[5]: #{col5}"
-        puts "data.row(i)[6]: #{col6}"
+        # puts "data.row(i)[1]: #{col1}"
+        # puts "data.row(i)[2]: #{col2}"
+        # puts "data.row(i)[5]: #{col5}"
+        # puts "data.row(i)[6]: #{col6}"
 
         StatePolicy.create!(state_name: data.row(i)[0], state_of_emergency: col1, k_12_schools_closed: col2, shelter_in_place_start: col5, shelter_in_place_end: col6)
         
@@ -52,7 +54,8 @@ namespace :import_covid_spreadsheet do
 
         ###############################################################################
         # Face Masks table
-        ###############################################################################        
+        ###############################################################################    
+        puts "populating the Face Mask table"    
         col10 = data.row(i)[10]
         col11 = data.row(i)[11]
 
@@ -65,6 +68,8 @@ namespace :import_covid_spreadsheet do
         ###############################################################################
         # Business table
         ###############################################################################   
+        puts "populating the Business table"
+
         col3 = data.row(i)[3] # Closed day cares
         col4 = data.row(i)[4] # Date banned visitors to nursing homes
         col7 = data.row(i)[7] # Closed non-essential businesses
@@ -101,17 +106,20 @@ namespace :import_covid_spreadsheet do
        ###############################################################################
         #  table
         ###############################################################################   
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
 
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]
+        # LOOK FOR BOOLEAN VALUES AND MAKE SURE YOU'RE NOT SETTIGN THEM TO NIL BECAUSE OF 0.0 IN THE SPREADSHEET
+
+        # col = data.row(i)[]
+        # col = data.row(i)[]
+        # col = data.row(i)[]
+        # col = data.row(i)[]
+        # col = data.row(i)[]
+        # col = data.row(i)[]
+
+        # col == 0.0 ? col = nil : col = data.row(i)[]
+        # col == 0.0 ? col = nil : col = data.row(i)[]
+        # col == 0.0 ? col = nil : col = data.row(i)[]
+        # col == 0.0 ? col = nil : col = data.row(i)[]
 
 
       end
