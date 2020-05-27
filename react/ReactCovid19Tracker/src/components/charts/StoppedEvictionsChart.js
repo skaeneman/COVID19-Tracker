@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Doughnut, Bar, Line, Pie, Scatter } from 'react-chartjs-2';
+
+
 export default function StoppedEvictionsChart() {
 
   // temporarily set the page to white background
   // document.body.style.backgroundColor = "#FFFFFF";
-
 
   const [chartData, setChartData] = useState({}); // empty object
 
@@ -47,7 +48,6 @@ export default function StoppedEvictionsChart() {
   useEffect(() => {
     chart(); // call function
   }, []);
-
 
   return (
     <div>
@@ -95,7 +95,6 @@ export default function StoppedEvictionsChart() {
                    fontColor: '#FFFFFF'
                   }
                },
-
           }}
         />
     </div>

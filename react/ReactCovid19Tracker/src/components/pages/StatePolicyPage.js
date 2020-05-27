@@ -12,7 +12,6 @@ import StateHealthCareData from '../state-data/StateHealthCareData';
 import StateUnemploymentInsuranceData from '../state-data/StateUnemploymentInsuranceData';
 import StateStatisticsData from '../state-data/StateStatisticsData';
 
-
 export default class StatePolicyPage extends Component {
   constructor(props) {
     super(props);

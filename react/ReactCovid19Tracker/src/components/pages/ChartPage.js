@@ -10,11 +10,14 @@ export default class ChartPage extends Component {
       <div>
         
         {/* <Doughnut data={...} /> */}
-        <Container>
+        <Container fluid>
           <br />
           <Row>
-            <Col as={Col} sm="12" >
+            <Col as={Col} sm="6" >
               <StoppedEvictionsChart />
+            </Col>
+            <Col as={Col} sm="6" >
+              <StoppedEvictionsChart />              
             </Col>                     
           </Row>
           <br />

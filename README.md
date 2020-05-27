@@ -7,8 +7,13 @@ database design consists of 7 tables that have foreign keys referening a state p
 
 start React on port 3000 by running npm run start
 
-maps the resaerchers spreadsheet to 7 different database tables in order to do an initial import of the data 
+maps the researchers spreadsheet to 7 different database tables in order to do an initial import of the data 
 
+full authentication with cookies
+
+error handling of login\registration forms
+
+encrypted user passwords
 
 
 This will be the readme file for the Rails\React project...
