@@ -175,30 +175,20 @@ namespace :import_covid_spreadsheet do
         ###############################################################################
         # State Statistic table
         ###############################################################################   
+        puts "State Statistic table inserting row... #{data.row(i)}"
 
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
-        col = data.row(i)[]
+        col48 = data.row(i)[48] # Population density per square miles
+        col49 = data.row(i)[49] # Population 2018 
+        col50 = data.row(i)[50] # Square Miles
+        col51 = data.row(i)[51] # Number Homeless (2019)
+        col52 = data.row(i)[52] # Percent Unemployed (2018)
+        col53 = data.row(i)[53] # Percent living under the federal poverty line (2018)
+        col54 = data.row(i)[54] # Percent at risk for serious illness due to COVID
+        col55 = data.row(i)[55] # All-cause deaths 2018
 
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]
-        col == 0.0 ? col = nil : col = data.row(i)[]        
-        # col.to_s.start_with?("0", "*") ? col = nil : col = data.row(i)[] 
-
-
-        StateStatistic.create(state_policy_id: state.id, population_density_per_square_mile: , population_2018: , square_miles: ,
-          homeless_population: , percent_unemployed_2018: , percent_living_below_fed_poverty_line_2018: , percent_at_risk_of_covid: ,
-          all_causes_of_death_2018: )        
+        StateStatistic.create(state_policy_id: state.id, population_density_per_square_mile: col48, population_2018: col49, square_miles: col50,
+          homeless_population: col51, percent_unemployed_2018: col52, percent_living_below_fed_poverty_line_2018: col53, percent_at_risk_of_covid: col54,
+          all_causes_of_death_2018: col55)        
 
         ###############################################################################
         #  table
