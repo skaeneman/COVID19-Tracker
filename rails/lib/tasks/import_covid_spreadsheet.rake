@@ -103,8 +103,8 @@ namespace :import_covid_spreadsheet do
         reopen_businesses: col8, religious_gatherings_exempt: col9, firearm_retailers_open: col13, liquor_stores_open: col12, closed_restaurants_except_take_out: col14, 
         reopen_restaurants: col15, closed_gyms: col17, reopened_gyms: col18, closed_movie_theaters: col19, reopened_movie_theaters: col20)
 
-       ###############################################################################
-        #  Property table
+        ###############################################################################
+        # Property table
         ###############################################################################   
         puts "Property table inserting row... #{data.row(i)}"
 
@@ -125,7 +125,7 @@ namespace :import_covid_spreadsheet do
 
 
         ###############################################################################
-        #  Health Care table
+        # Health Care table
         ###############################################################################   
         puts "Health Care table inserting row... #{data.row(i)}"
 
@@ -153,7 +153,54 @@ namespace :import_covid_spreadsheet do
           allow_or_expand_medicaid_telehealth: col29, suspended_elective_medical: col30, resumed_elective_medical: col31, made_efforts_to_limit_abortions: col38, 
           limit_abortion_details: col39, medicaid_expansion: col47)
 
-       ###############################################################################
+
+        ###############################################################################
+        # Unemployment Insurance table
+        ###############################################################################   
+        puts "Unemployment Insurance table inserting row... #{data.row(i)}"
+
+        col32 = data.row(i)[32] # Prior to pandemic, no state unemployment waiting period; or date waiting period waived not found
+        col33 = data.row(i)[33] # Waived one week waiting period for unemployment insurance
+        col34 = data.row(i)[34] # Waive work search requirement for unemployment insurance
+        col35 = data.row(i)[35] # Expand eligibility of unemployment insurance to anyone who is quarantined and/or taking care of someone who is quarantined
+        col36 = data.row(i)[36] # Expand eligibility of unemployment insurance to those who have lost childcare/school closures
+        col37 = data.row(i)[37] # Extend the amount of time an individual can be on unemployment insurance
+        col46 = data.row(i)[46] # Paid sick leave
+
+        col33 == 0.0 ? col33 = nil : col33 = data.row(i)[33]
+
+        UnemploymentInsurance.create(state_policy_id: state.id, no_ui_waiting_period: col32, waived_ui_waiting_period: col33, waived_work_search_for_ui: col34,
+           expand_ui_to_quarantined_people: col35, expand_ui_for_lost_childcare_or_school_closures: col36, extended_time_for_people_on_ui: col37, paid_sick_leave: col46)
+
+        ###############################################################################
+        # State Statistic table
+        ###############################################################################   
+
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+        col = data.row(i)[]
+
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]
+        col == 0.0 ? col = nil : col = data.row(i)[]        
+        # col.to_s.start_with?("0", "*") ? col = nil : col = data.row(i)[] 
+
+
+        StateStatistic.create(state_policy_id: state.id, population_density_per_square_mile: , population_2018: , square_miles: ,
+          homeless_population: , percent_unemployed_2018: , percent_living_below_fed_poverty_line_2018: , percent_at_risk_of_covid: ,
+          all_causes_of_death_2018: )        
+
+        ###############################################################################
         #  table
         ###############################################################################   
 
@@ -161,15 +208,9 @@ namespace :import_covid_spreadsheet do
 
         # col = data.row(i)[]
         # col = data.row(i)[]
-        # col = data.row(i)[]
-        # col = data.row(i)[]
-        # col = data.row(i)[]
-        # col = data.row(i)[]
 
         # col == 0.0 ? col = nil : col = data.row(i)[]
-        # col == 0.0 ? col = nil : col = data.row(i)[]
-        # col == 0.0 ? col = nil : col = data.row(i)[]
-        # col == 0.0 ? col = nil : col = data.row(i)[]
+        # col.to_s.start_with?("0", "*") ? col = nil : col = data.row(i)[]         
 
       end
     end
