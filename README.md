@@ -3,11 +3,11 @@
 start the Rails server on a different port than the typical 3000 such as 3001
 rails s -p 3001
 
-database design consists of 8??? tables that have foreign keys referening a state policy table....
+database design consists of 7 tables that have foreign keys referening a state policy table....
 
 start React on port 3000 by running npm run start
 
-maps the resaerchers spreadsheet to 8??? different database tables in order to do an initial import of the data 
+maps the resaerchers spreadsheet to 7 different database tables in order to do an initial import of the data 
 
 
 

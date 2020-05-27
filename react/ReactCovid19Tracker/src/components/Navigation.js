@@ -22,10 +22,8 @@ export default class Navigation extends Component {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="#features">About</Nav.Link>
             <NavDropdown title="Analytics" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="/states">State Data</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Charts</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+              <NavDropdown.Item href="/states">State data</NavDropdown.Item>
+              <NavDropdown.Item href="/charts">Charts</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           { this.props.isLoggedIn === "NOT_LOGGED_IN" ?

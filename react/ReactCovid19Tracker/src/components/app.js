@@ -7,6 +7,7 @@ import Dashboard from './Dashboard';
 import LoginPage from './pages/LoginPage';
 import RegistrationPage from './pages/RegistrationPage';
 import StatePolicyPage from './pages/StatePolicyPage';
+import ChartPage from './pages/ChartPage';
 import Navigation from '../components/Navigation';
 import Container from 'react-bootstrap/Container';
 
@@ -159,7 +160,21 @@ export default class App extends Component {
                   user={this.state.user}
                 />
               )}
-            />                               
+            />    
+            <Route
+              exact
+              path={"/charts"}
+              render={props => (
+                <ChartPage
+                  {...props}
+                  handleLogin={this.handleLogin}
+                  handleLogout={this.handleLogout}
+                  handleLogoutClick={this.handleLogoutClick}
+                  loggedInStatus={this.state.loggedInStatus}
+                  user={this.state.user}
+                />
+              )}
+            />                                        
           </Switch>
         </BrowserRouter>
       </div>
