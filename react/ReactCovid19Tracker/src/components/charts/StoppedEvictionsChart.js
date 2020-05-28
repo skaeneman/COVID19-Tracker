@@ -20,13 +20,25 @@ export default function StoppedEvictionsChart() {
         for (const dataObj of res.data) {
           evictionsStoppedOn.push(dataObj.stop_initiating_evictions);
           stateName.push(dataObj.state_name);
+
+          // console.log("res.data", res.data);
         }
         setChartData({
-          labels: stateName,
+          labels: evictionsStoppedOn,
           datasets: [
             {
-              label: "Ratings",
-              data: evictionsStoppedOn,
+              label: "Evictions Stopped",
+
+              // data: [{
+              //   x: new Date(),
+              //   y: 1
+              // }, {
+              //   t: new Date(),
+              //   y: 10
+              // }],
+
+              data: [2, 4, 5, 12, 8, 5, 3, 5, 10, 3, 4, 9],
+
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -54,45 +66,6 @@ export default function StoppedEvictionsChart() {
     console.log(evictionsStoppedOn, stateName);
   };
 
-
-
-
-  // const chart = () => {
-  //   const labels = [
-  //     "Massachusetts",
-  //     "New Hampshire",
-  //     "Maine"
-  //   ];
-
-  //   setChartData({
-  //     labels,
-  //     datasets: [
-  //       {
-  //         label: "Ratings",
-  //         data: [10, 5, 12],
-  //         backgroundColor: [
-  //           'rgba(255, 99, 132, 0.2)',
-  //           'rgba(54, 162, 235, 0.2)',
-  //           'rgba(255, 206, 86, 0.2)',
-  //           'rgba(75, 192, 192, 0.2)',
-  //           'rgba(153, 102, 255, 0.2)',
-  //           'rgba(255, 159, 64, 0.2)'
-  //         ],  
-  //         borderColor: [
-  //           'rgba(255, 99, 132, 1)',
-  //           'rgba(54, 162, 235, 1)',
-  //           'rgba(255, 206, 86, 1)',
-  //           'rgba(75, 192, 192, 1)',
-  //           'rgba(153, 102, 255, 1)',
-  //           'rgba(255, 159, 64, 1)'
-  //         ],
-  //         borderWidth: 1                  
-  //       },
-  //     ],
-  //   });
-
-  // };
-
   useEffect(() => {
     chart(); // call function
   }, []);
@@ -114,6 +87,10 @@ export default function StoppedEvictionsChart() {
             scales: {
               yAxes: [
                 {
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'States'
+                  },                  
                   ticks: {
                     autoSkip: true,
                     maxTicksLimit: 10,
@@ -128,6 +105,10 @@ export default function StoppedEvictionsChart() {
               ],
               xAxes: [
                 {
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Date Evictions Stopped'
+                  },                  
                   ticks: {
                     fontColor: "#FFFFFF",
                   },                  
@@ -135,6 +116,10 @@ export default function StoppedEvictionsChart() {
                     display: true,
                     color: "#495057"
                   },
+                  // type: 'time',
+                  // time: {
+                  //     unit: 'day'
+                  // },                  
                 },
               ],
             }, 

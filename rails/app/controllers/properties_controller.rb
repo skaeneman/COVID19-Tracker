@@ -46,9 +46,23 @@ class PropertiesController < ApplicationController
     evictions = Property.joins("INNER JOIN state_policies ON properties.state_policy_id = state_policies.id")
                         .select(["state_policies.id", "state_name", "stop_initiating_evictions"])
     
+    no_eviction_policy = []
+    no_eviction_policy_count
+    eviction_policy = []
+    eviction_policy_count
+    # TODO: GET EVICTION COUNTS AND PASS TO VIEW ()                        
+    evictions.each do |evict|
+      if evict.nil?
+        no_eviction_policy << evict
+      else
+        eviction_policy << evict
+      end
+    end
+
     respond_to do |format|
       if evictions        
-        format.json { render json: evictions.to_json(status: 200) }
+        # format.json { render json: evictions.to_json(only: %i[stop_initiating_evictions], include: { state_policy: { only: %i[state_name] } }) }
+        format.json { render json: evictions.to_json(only: %i[state_name stop_initiating_evictions])} # leave the id column
       else
         format.json { render json: "error: no eviction data available" }
       end
