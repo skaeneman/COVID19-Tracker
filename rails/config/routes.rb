@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :state_statistics
   resources :unemployment_insurances
   resources :health_cares
-  resources :properties
   resources :businesses
   resources :face_masks
   resources :sessions, only: [:create]
@@ -17,6 +16,12 @@ Rails.application.routes.draw do
 
   get :login, to: "static#login"
   get :signup, to: "static#signup"
+
+
+  # property data
+  get 'properties/get_evictions', to: 'properties#get_evictions', defaults: { format: 'json' }
+  resources :properties
+
 
   root to: "static#home"
 end

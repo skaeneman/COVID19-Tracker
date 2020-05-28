@@ -37,6 +37,24 @@ class PropertiesController < ApplicationController
     end
   end
 
+  # GET 'properties/get_evictions'
+  def get_evictions
+    # Rails.logger.debug("get_evictions params..... #{params.inspect}")
+
+    # join the state_policies table and properties table and only select the eviction data
+    evictions = Property.joins("INNER JOIN state_policies ON properties.state_policy_id = state_policies.id")
+                        .select(["state_policies.id", "state_name", "stop_initiating_evictions"])
+    
+    respond_to do |format|
+      if evictions        
+        format.json { render json: evictions.to_json(status: 200) }
+      else
+        format.json { render json: "error: no eviction data available" }
+      end
+    end    
+  end
+
+
   # # PATCH/PUT /properties/1
   # # PATCH/PUT /properties/1.json
   # def update
