@@ -38,6 +38,7 @@ class PropertiesController < ApplicationController
   end
 
   # GET 'properties/get_evictions'
+  # returns API get request about eviction data
   def get_evictions
     # Rails.logger.debug("get_evictions params..... #{params.inspect}")
 
