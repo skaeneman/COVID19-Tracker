@@ -5,55 +5,35 @@ import axios from 'axios';
 
 export default function StoppedEvictionsChart() {
 
-  // temporarily set the page to white background
-  // document.body.style.backgroundColor = "#FFFFFF";
-
   const [chartData, setChartData] = useState({}); // empty object
 
   const chart = () => {
-    let evictionsStoppedOn = [];
-    let stateName = [];
+    let eviction_policy_count = [];
+    let no_eviction_policy_count = [];
     axios
       .get("http://localhost:3001/properties/get_evictions")
       .then(res => {
-        console.log(res);
-        for (const dataObj of res.data) {
-          evictionsStoppedOn.push(dataObj.stop_initiating_evictions);
-          stateName.push(dataObj.state_name);
+        console.log("res: ", res);
 
-          // console.log("res.data", res.data);
-        }
+        // push data returned from Rails
+        eviction_policy_count.push(res.data.eviction_policy_count);
+        no_eviction_policy_count.push(res.data.no_eviction_policy_count);        
+
+        // create the chart
         setChartData({
-          labels: evictionsStoppedOn,
+          labels: [" # of states that paused evictions", " # of states that didn't pause evictions"],
           datasets: [
             {
               label: "Evictions Stopped",
-
-              // data: [{
-              //   x: new Date(),
-              //   y: 1
-              // }, {
-              //   t: new Date(),
-              //   y: 10
-              // }],
-
-              data: [2, 4, 5, 12, 8, 5, 3, 5, 10, 3, 4, 9],
+              data: [eviction_policy_count, no_eviction_policy_count],            
 
               backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 99, 132, 0.2)', //red
+                'rgba(75, 192, 192, 0.2)', //grean
               ],  
               borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(255, 99, 132, 1)', // red
+                'rgba(75, 192, 192, 1)', // green
               ],
               borderWidth: 1                  
             },
@@ -63,7 +43,6 @@ export default function StoppedEvictionsChart() {
       .catch(err => {
         console.log(err);
       });
-    console.log(evictionsStoppedOn, stateName);
   };
 
   useEffect(() => {
@@ -72,58 +51,23 @@ export default function StoppedEvictionsChart() {
 
   return (
     <div>
-      <p className="text-white">test...</p>
       { console.log(chartData) }
 
-      <Bar
+      <Doughnut
           data={chartData}
           options={{
-            responsive: true,
+            responsive: true,            
             title: { 
               display: true,
               fontColor: '#FFFFFF',
-              text: 'Test chart...'
+              text: 'US States that Temporarily Stopped Evictions'
             },
             scales: {
-              yAxes: [
-                {
-                  scaleLabel: {
-                    display: true,
-                    labelString: 'States'
-                  },                  
-                  ticks: {
-                    autoSkip: true,
-                    maxTicksLimit: 10,
-                    beginAtZero: true,
-                    fontColor: "white",
-                  },
-                  gridLines: {
-                    display: true,
-                    color: "#495057"
-                  },
-                },
-              ],
-              xAxes: [
-                {
-                  scaleLabel: {
-                    display: true,
-                    labelString: 'Date Evictions Stopped'
-                  },                  
-                  ticks: {
-                    fontColor: "#FFFFFF",
-                  },                  
-                  gridLines: {
-                    display: true,
-                    color: "#495057"
-                  },
-                  // type: 'time',
-                  // time: {
-                  //     unit: 'day'
-                  // },                  
-                },
-              ],
+              yAxes: [],
+              xAxes: [],
             }, 
             legend: {
+              display: true,
               labels: {
                    fontColor: '#FFFFFF'
                   }
@@ -133,3 +77,4 @@ export default function StoppedEvictionsChart() {
     </div>
   )
 }
+
