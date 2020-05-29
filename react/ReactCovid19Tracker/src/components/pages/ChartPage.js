@@ -11,6 +11,8 @@ export default class ChartPage extends Component {
 
     this.state = {
       modalShow: false,
+      stillEvicting: [],
+      stoppedEvicting: [],
      }
   }
 
@@ -22,18 +24,18 @@ export default class ChartPage extends Component {
     this.setState({modalShow: false});
   }  
 
-  // gets data returned from the select state dropdown
+  // gets data passed in from the StoppedEvictionsChart.js Rails API response
   callbackFunction = (childData) => {
-    console.log("callbackFunction data: ", childData);     
+    // console.log("callbackFunction in ChartPage.js: ", childData);     
     // set the "state" 
     this.setState({
-      id: childData.id
+      stillEvicting: childData.no_eviction_policy,
+      stoppedEvicting: childData.eviction_policy
      });
    }
 
   render() {
-    console.log("modalShow", this.state.modalShow);
-
+    // console.log("modalShow", this.state.modalShow);
     return (
       <div>        
         {/* <Doughnut data={...} /> */}
@@ -44,14 +46,18 @@ export default class ChartPage extends Component {
               {/* <StoppedEvictionsChart /> */}
             </Col>
             <Col as={Col} sm="6" >
-              <StoppedEvictionsChart /><br />
+              <StoppedEvictionsChart chartPageCallback={this.callbackFunction} /><br />
               <div className="text-center">
                 <Button className="center" variant="secondary" onClick={() => this.handleClick()}>
                 detailed state eviction data
                 </Button>
               </div>
-              <EvictionModal show={this.state.modalShow} parentCallback={this.callbackFunction} onHide={() => this.closeModal()} />
-
+              <EvictionModal 
+                show={this.state.modalShow} 
+                evicting={this.state.stillEvicting}
+                stopped={this.state.stoppedEvicting}
+                onHide={() => this.closeModal()} 
+              />
             </Col>                     
           </Row>
           <br />

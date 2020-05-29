@@ -3,21 +3,24 @@ import { Doughnut, Bar, Line, Pie, Scatter } from 'react-chartjs-2';
 import axios from 'axios';
 
 
-export default function StoppedEvictionsChart() {
+export default function StoppedEvictionsChart(props) {
 
   const [chartData, setChartData] = useState({}); // empty object
 
   const chart = () => {
-    let eviction_policy_count = [];
-    let no_eviction_policy_count = [];
+    let evictionPolicyCount = [];
+    let noEvictionPolicyCount = [];
+   
     axios
       .get("http://localhost:3001/properties/get_evictions")
       .then(res => {
         console.log("res: ", res);
 
         // push data returned from Rails
-        eviction_policy_count.push(res.data.eviction_policy_count);
-        no_eviction_policy_count.push(res.data.no_eviction_policy_count);        
+        evictionPolicyCount.push(res.data.eviction_policy_count);
+        noEvictionPolicyCount.push(res.data.no_eviction_policy_count);       
+  
+        props.chartPageCallback(res.data); // send data back up to the parent caller
 
         // create the chart
         setChartData({
@@ -25,7 +28,7 @@ export default function StoppedEvictionsChart() {
           datasets: [
             {
               label: "Evictions Stopped",
-              data: [eviction_policy_count, no_eviction_policy_count],            
+              data: [evictionPolicyCount, noEvictionPolicyCount],            
 
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)', //red
@@ -60,7 +63,7 @@ export default function StoppedEvictionsChart() {
             title: { 
               display: true,
               fontColor: '#FFFFFF',
-              text: 'US States that Temporarily Stopped Evictions'
+              text: 'US States Temporarily Stopping Evictions (data includes D.C.)'
             },
             scales: {
               yAxes: [],
