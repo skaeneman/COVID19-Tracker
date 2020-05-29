@@ -40,29 +40,33 @@ class PropertiesController < ApplicationController
   # GET 'properties/get_evictions'
   # returns API get request about eviction data
   def get_evictions
-    # Rails.logger.debug("get_evictions params..... #{params.inspect}")
-
     # join the state_policies table and properties table and only select the eviction data
-    evictions = Property.joins("INNER JOIN state_policies ON properties.state_policy_id = state_policies.id")
-                        .select(["state_policies.id", "state_name", "stop_initiating_evictions"])
+    # evictions = Property.joins("INNER JOIN state_policies ON properties.state_policy_id = state_policies.id")
+    #                     .select(["state_policies.id", "state_name", "stop_initiating_evictions"])
     
+    evictions = Property.select(["id", "stop_initiating_evictions"]) # just grab 2 columns from the table
+
     no_eviction_policy = []
-    no_eviction_policy_count
     eviction_policy = []
-    eviction_policy_count
-    # TODO: GET EVICTION COUNTS AND PASS TO VIEW ()                        
-    evictions.each do |evict|
-      if evict.nil?
+
+    # sort on evictions vs no policy for evictions (if nil then no policy exists)
+    evictions.each do |evict, index|
+      if evict.stop_initiating_evictions.nil?
         no_eviction_policy << evict
       else
         eviction_policy << evict
       end
     end
 
+    # get counts
+    no_eviction_policy_count = no_eviction_policy.size
+    eviction_policy_count = eviction_policy.size
+
     respond_to do |format|
       if evictions        
         # format.json { render json: evictions.to_json(only: %i[stop_initiating_evictions], include: { state_policy: { only: %i[state_name] } }) }
-        format.json { render json: evictions.to_json(only: %i[state_name stop_initiating_evictions])} # leave the id column
+        # format.json { render json: evictions.to_json(only: %i[state_name stop_initiating_evictions])} # leave the id column
+        format.json { render json: { "eviction_policy_count": eviction_policy_count, "no_eviction_policy_count": no_eviction_policy_count }}
       else
         format.json { render json: "error: no eviction data available" }
       end
