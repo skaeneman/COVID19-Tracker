@@ -22,6 +22,15 @@ export default class ChartPage extends Component {
     this.setState({modalShow: false});
   }  
 
+  // gets data returned from the select state dropdown
+  callbackFunction = (childData) => {
+    console.log("callbackFunction data: ", childData);     
+    // set the "state" 
+    this.setState({
+      id: childData.id
+     });
+   }
+
   render() {
     console.log("modalShow", this.state.modalShow);
 
@@ -36,13 +45,12 @@ export default class ChartPage extends Component {
             </Col>
             <Col as={Col} sm="6" >
               <StoppedEvictionsChart /><br />
-              <p className="text-white text-center">detailed state eviction data</p>        
-
-              <Button variant="primary" onClick={() => this.handleClick()}>
-                Launch modal with grid
-              </Button>
-
-              <EvictionModal show={this.state.modalShow} onHide={() => this.closeModal()} />
+              <div className="text-center">
+                <Button className="center" variant="secondary" onClick={() => this.handleClick()}>
+                detailed state eviction data
+                </Button>
+              </div>
+              <EvictionModal show={this.state.modalShow} parentCallback={this.callbackFunction} onHide={() => this.closeModal()} />
 
             </Col>                     
           </Row>
