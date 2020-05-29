@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'react-bootstrap';
+import { Card, Spinner } from 'react-bootstrap';
 import CountUp from 'react-countup';
 
 const Recovered = ({ data: { recovered, lastUpdate } }) => {
@@ -8,8 +8,8 @@ const Recovered = ({ data: { recovered, lastUpdate } }) => {
       <div>
         <Card className="text-center bg-dark">
           <Card.Body>
-            <Card.Text className="text-white">
-              Loading...
+            <Card.Text as="span" className="text-white">
+              <Spinner animation="border" variant="primary" />
             </Card.Text>
             <Card.Title className="text-white">Recovered</Card.Title>
           </Card.Body>

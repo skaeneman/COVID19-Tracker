@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card } from 'react-bootstrap';
+import { Card, Spinner } from 'react-bootstrap';
 import CountUp from 'react-countup';
 
 const Deaths = ({ data: { deaths, lastUpdate } }) => {
@@ -8,8 +8,8 @@ const Deaths = ({ data: { deaths, lastUpdate } }) => {
       <div>
         <Card className="text-center bg-dark">
           <Card.Body>
-            <Card.Text className="text-white">
-              Loading...
+            <Card.Text as="span" className="text-white">
+              <Spinner animation="border" variant="primary" />
             </Card.Text>
             <Card.Title className="text-white">Deaths</Card.Title>
           </Card.Body>

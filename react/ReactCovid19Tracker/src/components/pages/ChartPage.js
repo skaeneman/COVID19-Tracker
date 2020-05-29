@@ -14,10 +14,11 @@ export default class ChartPage extends Component {
           <br />
           <Row>
             <Col as={Col} sm="6" >
-              <StoppedEvictionsChart />
+              {/* <StoppedEvictionsChart /> */}
             </Col>
             <Col as={Col} sm="6" >
-              <StoppedEvictionsChart />              
+              <StoppedEvictionsChart /><br />
+              <p className="text-white text-center">detailed state eviction data</p>              
             </Col>                     
           </Row>
           <br />
