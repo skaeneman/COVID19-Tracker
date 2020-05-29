@@ -1,14 +1,32 @@
 import React, { Component } from 'react';
+import { useState } from 'react';
 import StoppedEvictionsChart from '../charts/StoppedEvictionsChart';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import EvictionModal from '../charts/EvictionModal';
+import { Modal, Container, Row, Col, Button} from 'react-bootstrap';
 
 export default class ChartPage extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      modalShow: false,
+     }
+  }
+
+  handleClick = () => {
+    this.setState({modalShow: true});
+  }  
+
+  closeModal = () => {
+    this.setState({modalShow: false});
+  }  
+
   render() {
+    console.log("modalShow", this.state.modalShow);
+
     return (
-      <div>
-        
+      <div>        
         {/* <Doughnut data={...} /> */}
         <Container fluid>
           <br />
@@ -18,7 +36,14 @@ export default class ChartPage extends Component {
             </Col>
             <Col as={Col} sm="6" >
               <StoppedEvictionsChart /><br />
-              <p className="text-white text-center">detailed state eviction data</p>              
+              <p className="text-white text-center">detailed state eviction data</p>        
+
+              <Button variant="primary" onClick={() => this.handleClick()}>
+                Launch modal with grid
+              </Button>
+
+              <EvictionModal show={this.state.modalShow} onHide={() => this.closeModal()} />
+
             </Col>                     
           </Row>
           <br />
