@@ -2,12 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Doughnut, Bar, Line, Pie, Scatter, HorizontalBar } from 'react-chartjs-2';
 import axios from 'axios';
 
-export default function ShelterInPlaceChart() {
-
-  // temporarily set the page to white background
-  // document.body.style.backgroundColor = "#FFFFFF";
-
-  const [chartData, setChartData] = useState({}); // empty object
+export default function ShelterInPlaceChart(props) {
+  const [chartData, setChartData] = useState({});
 
   const chart = () => {
     let maskNotRequired = []
@@ -24,6 +20,9 @@ export default function ShelterInPlaceChart() {
       .get("http://localhost:3001/facemasks/facemasks_by_state")
       .then(res => {
         console.log("face masks: ", res);
+
+        // pass the face mask data up to the ChartPage.js parent
+        props.chartPageFaceMaskCallback(res.data);
 
         // get face masks broken down by state
         maskNotRequired.push(res.data.mask_not_required);
