@@ -15,7 +15,8 @@ html, body {
 }
 
 .jumbotron-padding {
-  padding-top: 100px;
+  padding-top: 75px;
+  padding-bottom: 100px;
 }
 
 @include media-breakpoint-up(sm) {

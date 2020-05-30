@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Jumbotron from 'react-bootstrap/Jumbotron';
+import { Jumbotron, Col } from 'react-bootstrap';
 import '../../style/main.scss';
 
 export default class Login extends Component {
@@ -55,7 +55,7 @@ export default class Login extends Component {
     render() {
         return (
           <div className="jumbotron-padding">
-              <Jumbotron className="bg-dark text-light">
+              <Jumbotron as={Col} md={{ span: 8, offset: 2 }} className="bg-dark text-light">
                 <h1 className="text-center">Login</h1>
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Group controlId="formBasicEmail">
