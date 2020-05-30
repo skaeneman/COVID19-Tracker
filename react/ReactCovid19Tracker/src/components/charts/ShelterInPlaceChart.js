@@ -10,42 +10,36 @@ export default function ShelterInPlaceChart() {
   const [chartData, setChartData] = useState({}); // empty object
 
   const chart = () => {
-    let eviction_policy_count = [];
-    let no_eviction_policy_count = [];
+    let maskNotRequired = []
+    let mandateUseForEveryone = []
+    let mandateUseForEmployees = []
+    let notMandatedForEmployees = []
+
+    let maskNotRequiredCount = ''
+    let mandateUseForEveryoneCount = ''
+    // console.log("maskNotRequiredCount...", maskNotRequiredCount);
+
     axios
       .get("http://localhost:3001/facemasks/facemasks_by_state")
       .then(res => {
         console.log("shelter in place: ", res);
 
-          eviction_policy_count.push(res.data.eviction_policy_count);
-          no_eviction_policy_count.push(res.data.no_eviction_policy_count);     
-          
-          // loop through array and push
-        // for (const dataObj of res.data) {
-        //   eviction_policy_count.push(dataObj.eviction_policy_count);
-        //   no_eviction_policy_count.push(dataObj.no_eviction_policy_count);
-        //   // console.log("res.data", res.data);
-        // }
+        // get face masks broken down by state
+        maskNotRequired.push(res.data.mask_not_required);
+        mandateUseForEveryone.push(res.data.mandate_use_for_everyone);     
+        mandateUseForEmployees.push(res.data.mandate_use_for_employees);     
+        notMandatedForEmployees.push(res.data.not_mandated_for_employees);     
+
+        // get counts
+        maskNotRequiredCount = res.data.mask_not_required.length
+        mandateUseForEveryoneCount = res.data.mandate_use_for_everyone.length
+
         setChartData({
-          labels: ["Required in Public", "Not Required in Public", "Employess of Public Businesses"],
+          labels: [ "Not Required in Public", "Required in Public", "Employee's of Public Businesses", "Employee's Required"],
           datasets: [
             {
               labels: "Evictions Stopped",
-              data: [{
-                x: 24,
-                y: 5
-              }, {
-                x: 27,
-                y: 5
-            },
-            {
-              x: 24,
-              y: 5
-            }, {
-              x: 27,
-              y: 5
-          }
-          ],
+              data: [maskNotRequiredCount, mandateUseForEveryoneCount],
               
 
               backgroundColor: [
