@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { useState } from 'react';
 import StoppedEvictionsChart from '../charts/StoppedEvictionsChart';
-import ShelterInPlaceChart from '../charts/ShelterInPlaceChart';
+import FaceMaskChart from '../charts/FaceMaskChart';
 import EvictionModal from '../charts/EvictionModal';
 import { Modal, Container, Row, Col, Button} from 'react-bootstrap';
 
@@ -44,7 +44,7 @@ export default class ChartPage extends Component {
           <br />
           <Row>
             <Col as={Col} sm="6" >
-              <ShelterInPlaceChart />
+              <FaceMaskChart />
             </Col>
             <Col as={Col} sm="6" >
               <StoppedEvictionsChart chartPageCallback={this.callbackFunction} /><br />

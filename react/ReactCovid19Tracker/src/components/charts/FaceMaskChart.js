@@ -17,12 +17,13 @@ export default function ShelterInPlaceChart() {
 
     let maskNotRequiredCount = ''
     let mandateUseForEveryoneCount = ''
-    // console.log("maskNotRequiredCount...", maskNotRequiredCount);
+    let mandateUseForEmployeesCount = ''
+    let notMandatedForEmployeesCount = ''
 
     axios
       .get("http://localhost:3001/facemasks/facemasks_by_state")
       .then(res => {
-        console.log("shelter in place: ", res);
+        console.log("face masks: ", res);
 
         // get face masks broken down by state
         maskNotRequired.push(res.data.mask_not_required);
@@ -31,15 +32,17 @@ export default function ShelterInPlaceChart() {
         notMandatedForEmployees.push(res.data.not_mandated_for_employees);     
 
         // get counts
-        maskNotRequiredCount = res.data.mask_not_required.length
-        mandateUseForEveryoneCount = res.data.mandate_use_for_everyone.length
+        maskNotRequiredCount = res.data.mask_not_required.length;
+        mandateUseForEveryoneCount = res.data.mandate_use_for_everyone.length;
+        mandateUseForEmployeesCount = res.data.mandate_use_for_employees.length;
+        notMandatedForEmployeesCount = res.data.not_mandated_for_employees.length;
 
         setChartData({
-          labels: [ "Not Required in Public", "Required in Public", "Employee's of Public Businesses", "Employee's Required"],
+          labels: [ "Not Required in Public", "Required in Public", "Employee's of Public Businesses", "Employee's Not Required"],
           datasets: [
             {
               labels: "Evictions Stopped",
-              data: [maskNotRequiredCount, mandateUseForEveryoneCount],
+              data: [maskNotRequiredCount, mandateUseForEveryoneCount, mandateUseForEmployeesCount, notMandatedForEmployeesCount],
               
 
               backgroundColor: [
@@ -66,7 +69,6 @@ export default function ShelterInPlaceChart() {
       .catch(err => {
         console.log(err);
       });
-    // console.log(evictionsStoppedOn, stateName);
   };
 
   useEffect(() => {
@@ -124,7 +126,7 @@ export default function ShelterInPlaceChart() {
               ],
             }, 
             legend: {
-              display: true,
+              display: false,
               // position: 'bottom',
               labels: {
                    fontColor: '#FFFFFF'
