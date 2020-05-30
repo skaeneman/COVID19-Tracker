@@ -3,6 +3,7 @@ import { useState } from 'react';
 import StoppedEvictionsChart from '../charts/StoppedEvictionsChart';
 import FaceMaskChart from '../charts/FaceMaskChart';
 import EvictionModal from '../charts/EvictionModal';
+import FaceMaskModal from '../charts/FaceMaskModal';
 import { Modal, Container, Row, Col, Button} from 'react-bootstrap';
 
 export default class ChartPage extends Component {
@@ -11,18 +12,18 @@ export default class ChartPage extends Component {
     super(props);
 
     this.state = {
-      modalShow: false,
+      evictionModalShow: false,
       stillEvicting: [],
       stoppedEvicting: [],
      }
   }
 
-  handleClick = () => {
-    this.setState({modalShow: true});
+  openEvictionModal = () => {
+    this.setState({evictionModalShow: true});
   }  
 
-  closeModal = () => {
-    this.setState({modalShow: false});
+  closeEvictionModal = () => {
+    this.setState({evictionModalShow: false});
   }  
 
   // gets data passed in from the StoppedEvictionsChart.js Rails API response
@@ -45,19 +46,30 @@ export default class ChartPage extends Component {
           <Row>
             <Col as={Col} sm="6" >
               <FaceMaskChart />
+              <div className="text-center">
+              <Button className="center" variant="secondary" onClick={() => this.openEvictionModal()}>
+                fask mask details
+                </Button>
+              </div>
+              <FaceMaskModal 
+                show={this.state.evictionModalShow} 
+                evicting={this.state.stillEvicting}
+                stopped={this.state.stoppedEvicting}
+                onHide={() => this.closeEvictionModal()} 
+              />              
             </Col>
             <Col as={Col} sm="6" >
               <StoppedEvictionsChart chartPageCallback={this.callbackFunction} /><br />
               <div className="text-center">
-                <Button className="center" variant="secondary" onClick={() => this.handleClick()}>
-                detailed state eviction data
+                <Button className="center" variant="secondary" onClick={() => this.openEvictionModal()}>
+                  eviction details
                 </Button>
               </div>
               <EvictionModal 
-                show={this.state.modalShow} 
+                show={this.state.evictionModalShow} 
                 evicting={this.state.stillEvicting}
                 stopped={this.state.stoppedEvicting}
-                onHide={() => this.closeModal()} 
+                onHide={() => this.closeEvictionModal()} 
               />
             </Col>                     
           </Row>
