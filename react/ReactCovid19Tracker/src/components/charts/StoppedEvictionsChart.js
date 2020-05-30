@@ -14,7 +14,7 @@ export default function StoppedEvictionsChart(props) {
     axios
       .get("http://localhost:3001/properties/get_evictions")
       .then(res => {
-        console.log("res: ", res);
+        console.log("eviction data: ", res);
 
         // push data returned from Rails
         evictionPolicyCount.push(res.data.eviction_policy_count);
@@ -63,7 +63,7 @@ export default function StoppedEvictionsChart(props) {
             title: { 
               display: true,
               fontColor: '#FFFFFF',
-              text: 'US States Temporarily Stopping Evictions (data includes D.C.)'
+              text: 'States Temporarily Stopping Evictions (data includes D.C.)'
             },
             scales: {
               yAxes: [],

@@ -13,9 +13,9 @@ export default function ShelterInPlaceChart() {
     let eviction_policy_count = [];
     let no_eviction_policy_count = [];
     axios
-      .get("http://localhost:3001/properties/get_evictions")
+      .get("http://localhost:3001/facemasks/facemasks_by_state")
       .then(res => {
-        console.log("res: ", res);
+        console.log("shelter in place: ", res);
 
           eviction_policy_count.push(res.data.eviction_policy_count);
           no_eviction_policy_count.push(res.data.no_eviction_policy_count);     
@@ -27,7 +27,7 @@ export default function ShelterInPlaceChart() {
         //   // console.log("res.data", res.data);
         // }
         setChartData({
-          labels: ["Required in Public", "Not Required in Public","Employess of Public Businesses"],
+          labels: ["Required in Public", "Not Required in Public", "Employess of Public Businesses"],
           datasets: [
             {
               labels: "Evictions Stopped",
@@ -81,7 +81,7 @@ export default function ShelterInPlaceChart() {
 
   return (
     <div>
-      { console.log(chartData) }
+      {/* { console.log(chartData) } */}
 
       <HorizontalBar
           data={chartData}

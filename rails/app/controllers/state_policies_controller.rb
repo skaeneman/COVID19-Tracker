@@ -14,10 +14,6 @@ class StatePoliciesController < ApplicationController
   # end
 
   def get_state_policy
-
-    Rails.logger.debug("params..... #{params.inspect}")
-
-
     # lookup state then eager-load (cache) the associated tables
     state_policy = StatePolicy.includes(:business)
                               .includes(:face_mask)
