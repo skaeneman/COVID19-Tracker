@@ -24,37 +24,41 @@ export default function HomeDataAnimations() {
     }, []);
 
   return (
-    <div>
-      
+    <div>      
       <section data-aos="fade-up">
-        <Card className="bg-secondary text-white">
+        <Card className="bg-dark text-white">
           <Card.Body>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec nulla pretium, fringilla risus a, viverra velit. Maecenas congue sapien eu justo egestas malesuada. Vivamus massa mauris, venenatis at tristique quis, pellentesque ac quam. In tincidunt enim nec ipsum finibus, ac ultricies est dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vulputate id justo quis tempus. Mauris felis augue, dictum vel eros a, pretium mattis massa. Ut eget mauris nec mauris maximus hendrerit in et sem. Nam urna mi, tincidunt nec sodales ac, sodales id massa. Praesent non mauris eget elit scelerisque convallis dictum vitae neque. Sed vitae dolor blandit, scelerisque arcu vitae, dapibus leo. Fusce efficitur volutpat mollis. Pellentesque euismod lorem eu lacus aliquet, nec euismod urna convallis.
+            From closing schools, to stay at home orders, to eviction moratoriums, public policy will have an impact on the spread of the COVID-19 virus and its consequences.
+            With the US policy response to the virus primarily left to individual states, researchers at the <a target="_blank" href="https://www.bu.edu/sph/">Boston University 
+            School of Public Health</a> started tracking state level legislation and the specific policies that were being implemented in reponse to the COVID-19 pandemic in 
+            order to better facilitate global research on the impact of policy on public health and economic outcomes. 
           </Card.Body>
         </Card>
       </section><br />
       <div data-aos="fade-up">
-        <Card className="bg-secondary text-white">
+        <Card className="bg-dark text-white">
           <Card.Body>
-            Sed maximus laoreet ante, eget tincidunt ligula egestas at. Donec sem lorem, commodo nec eleifend vel, pharetra scelerisque nibh. Etiam rhoncus consequat porta. In convallis sed ex sed fringilla. Nam eget mauris turpis. Donec accumsan dignissim hendrerit. Donec arcu mauris, vestibulum id enim sit amet, cursus euismod nisi. Donec turpis nibh, pretium ut mi in, tincidunt tempus orci. Duis in feugiat odio, quis lobortis nisl. Ut accumsan tempor vehicula. Donec dictum finibus posuere. Morbi ultricies condimentum nisi at vehicula.
+            The research team is continuously expanding the data it collects and is working to keep all of the current policies up to date. To increase the usefulness
+            of the policy data for researchers and the public this web application was built to allow users to filter the data, visualize, map, and compare data by state.           
           </Card.Body>
         </Card>
       </div><br />
       <div data-aos="fade-up">
-        <Card className="bg-secondary text-white">
-          <Card.Body>
-            Vivamus eget faucibus tortor, ac dignissim neque. Proin vitae consequat magna. Nunc malesuada ultricies augue in venenatis. Sed pellentesque, leo et convallis consectetur, enim leo congue purus, eget imperdiet libero quam id metus. Vivamus quis venenatis nulla. Vestibulum dapibus, nunc nec molestie aliquam, dolor mauris hendrerit magna, eget efficitur dolor elit in purus. Phasellus tempus consequat purus, sit amet volutpat mauris auctor vestibulum. Mauris consequat neque vel enim sollicitudin rutrum. Integer condimentum, eros et aliquet elementum, risus lectus porttitor lorem, et auctor velit odio pharetra quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean tincidunt a lorem tristique lobortis. Vestibulum ullamcorper nisi lectus, id hendrerit odio interdum ut. Sed ultricies diam sapien, a ultrices ante luctus ac. Curabitur nulla augue, rutrum ac viverra a, tincidunt et arcu. Quisque lacinia mi vitae commodo molestie. Aliquam erat volutpat.            
+        <Card className="bg-dark text-white">
+          <Card.Body>                      
+            The state legislation data collected includes information such as when a state of emergency was declared, when schools were closed, when non-essential businesses
+            were closed and more. The number of policies researchers are tracking is growing daily and will soon include further information on health care policies, unemployment, and people
+            who are incarcerated. There is also other data tied to the spread of illness such as population density, the number of people who are homeless, and much more.  
           </Card.Body>
         </Card>
       </div><br />
-      <div data-aos="fade-up">
+      {/* <div data-aos="fade-up">
         <Card className="bg-secondary text-white">
           <Card.Body>
-            Pellentesque et consequat quam. Aenean quis cursus sem. Mauris in nisi ut arcu tincidunt ullamcorper. Vestibulum at accumsan enim. Etiam pellentesque dolor ac iaculis scelerisque. Aliquam et viverra sem. Vivamus urna ligula, tempor sed dolor auctor, sodales maximus dui. Quisque luctus varius quam sed hendrerit. Nam auctor quam eget interdum suscipit. Cras sed ornare turpis. Suspendisse sed consequat ipsum. Cras ornare arcu molestie, convallis est sed, porta lacus. Duis sit amet lorem sem. Etiam pellentesque purus lacus, in iaculis risus rutrum ut.            
           </Card.Body>
         </Card>
       </div>
-
+    <br /> */}
     </div>
   )
 }
