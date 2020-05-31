@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-import { Jumbotron, Col } from 'react-bootstrap';
+import { Jumbotron, Col, Button, Form, Alert } from 'react-bootstrap';
 import '../../style/main.scss';
 
 export default class Login extends Component {
@@ -12,7 +10,9 @@ export default class Login extends Component {
       this.state = {
         email: "",
         password: "",
-        loginErrors: ""          
+        loginErrors: "",
+        errorMsg: "",   
+        alertVisible: false,       
       };
 
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,8 +37,10 @@ export default class Login extends Component {
            console.log("logged in:", response);   
            this.props.handleSuccessfulAuth(response.data); 
          }
-         else {       
-          console.log("error.....", response.data);   
+         else {     
+          // display error message in the view
+          this.setState({errorMsg: response.data.message, alertVisible: true});  
+          console.log("login error.....", response.data);   
         }         
       }).catch(error => {
         console.log("login error:", error);
@@ -57,41 +59,52 @@ export default class Login extends Component {
 
     render() {
         return (
-          <div className="jumbotron-padding">
-              <Jumbotron as={Col} md={{ span: 8, offset: 2 }} className="bg-dark text-light">
-                <h1 className="text-center">Login</h1>
-                <Form onSubmit={this.handleSubmit}>
-                  <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control 
-                      type="email" 
-                      name="email" 
-                      placeholder="Email" 
-                      value={this.state.email} 
-                      onChange={this.handleChange}
-                      required                   
-                    />
-                    <Form.Text className="text-white">
-                      We'll never share your email with anyone else.
-                    </Form.Text>
-                  </Form.Group>
-                  <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control 
-                      type="password" 
-                      name="password" 
-                      placeholder="Password" 
-                      value={this.state.password} 
-                      onChange={this.handleChange}
-                      required 
-                    />
-                  </Form.Group>
-                  <Button variant="primary" type="submit" className="float-right btn btn-block-down">
-                    Login
-                  </Button>
-                  <br />
-                </Form>
-              </Jumbotron> 
+          <div>   
+            <div>      
+              <br />   
+              <Alert variant="primary" 
+                show={this.state.alertVisible} 
+                onClose={() => this.setState({alertVisible: false})} 
+                dismissible>{this.state.errorMsg}
+              </Alert>
+            </div>
+            
+            <div className="jumbotron-padding">
+                <Jumbotron as={Col} md={{ span: 8, offset: 2 }} className="bg-dark text-light">
+                  <h1 className="text-center">Login</h1>
+                  <Form onSubmit={this.handleSubmit}>
+                    <Form.Group controlId="formBasicEmail">
+                      <Form.Label>Email address</Form.Label>
+                      <Form.Control 
+                        type="email" 
+                        name="email" 
+                        placeholder="Email" 
+                        value={this.state.email} 
+                        onChange={this.handleChange}
+                        required                   
+                      />
+                      <Form.Text className="text-white">
+                        We'll never share your email with anyone else.
+                      </Form.Text>
+                    </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control 
+                        type="password" 
+                        name="password" 
+                        placeholder="Password" 
+                        value={this.state.password} 
+                        onChange={this.handleChange}
+                        required 
+                      />
+                    </Form.Group>
+                    <Button variant="primary" type="submit" className="float-right btn btn-block-down">
+                      Login
+                    </Button>
+                    <br />
+                  </Form>
+                </Jumbotron> 
+            </div>
           </div>
         )
     }

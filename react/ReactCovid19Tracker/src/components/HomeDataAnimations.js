@@ -38,7 +38,7 @@ export default function HomeDataAnimations() {
       <div data-aos="fade-up">
         <Card className="bg-dark text-white">
           <Card.Body>
-            The research team is continuously expanding the data it collects and is working to keep all of the current policies up to date. To increase the usefulness
+            The Boston University research team is continuously expanding the data it collects and is working to keep all of the current policies up to date. To increase the usefulness
             of the policy data for researchers and the public this web application was built to allow users to filter the data, visualize, map, and compare data by state.           
           </Card.Body>
         </Card>
