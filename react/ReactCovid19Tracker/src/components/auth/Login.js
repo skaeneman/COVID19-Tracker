@@ -37,6 +37,9 @@ export default class Login extends Component {
            console.log("logged in:", response);   
            this.props.handleSuccessfulAuth(response.data); 
          }
+         else {       
+          console.log("error.....", response.data);   
+        }         
       }).catch(error => {
         console.log("login error:", error);
       })
