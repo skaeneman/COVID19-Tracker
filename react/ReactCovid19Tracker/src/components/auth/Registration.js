@@ -42,8 +42,9 @@ import { Col, Button, Jumbotron } from 'react-bootstrap';
         }).then(response => {
           // the response back from the Rails server
           if (response.data.status === 'created') {
-            // call props not this.props because we pass props into the main Registration function
             props.handleSuccessfulAuth(response.data)
+          } else {
+            console.log("registration error: ", response.data);
           }
         }).catch(error => {
           console.log("registration error:", error);

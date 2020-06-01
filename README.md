@@ -11,7 +11,7 @@ maps the researchers spreadsheet to 7 different database tables in order to do a
 
 full authentication with cookies
 
-error handling of login\registration forms
+error handling of login\registration forms both at ReactJS side and when the forms are submitted to the Rails backend
 
 encrypted user passwords
 
