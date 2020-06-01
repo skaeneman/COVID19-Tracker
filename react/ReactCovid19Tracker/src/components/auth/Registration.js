@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import { Col, Button, Jumbotron, Alert } from 'react-bootstrap';
+import Pluralize from 'pluralize';
 
   function Registration (props) {
 
@@ -74,7 +75,7 @@ import { Col, Button, Jumbotron, Alert } from 'react-bootstrap';
             onClose={() => setAlertVisible(false)} 
             dismissible
           >
-          <Alert.Heading>Uh-oh! You got a {errors.length} error!</Alert.Heading>           
+          <Alert.Heading>Uh-oh! You got {Pluralize( "error", errors.length, true)} </Alert.Heading>           
             {errorMsgArray}
           </Alert>
         </div>
