@@ -7,7 +7,7 @@ export default class Footer extends Component {
     return (
       <div className="fixed-bottom">
         <Navbar bg="dark" variant="dark" sticky="bottom">
-          <Navbar.Brand href="#home">Footer Goes Here</Navbar.Brand>
+          <Navbar.Brand href="#home"></Navbar.Brand>
           <Nav className="mr-auto">
             {/* <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#features">Features</Nav.Link>
