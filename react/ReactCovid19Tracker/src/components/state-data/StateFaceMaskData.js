@@ -10,11 +10,11 @@ export default function StateFaceMaskData(props) {
             <Card.Text as="span">
             <div>   
               <Row>
-                <Col xs="2" className="text-left">Mandate Use For Everyone:</Col>
+                <Col xs="6" className="text-left">Mandate Use For Everyone:</Col>
                 <Col className="text-left">{ props.faceMaskData.mandateUseForEveryone }</Col>  
               </Row>               
               <Row>
-                <Col xs="2" className="text-left">Public Facing Businesses:</Col>
+                <Col xs="6" className="text-left">Public Facing Businesses:</Col>
                 <Col className="text-left">{ props.faceMaskData.mandateUseForEmployeesOfPublicFacingBusinesses }</Col>  
               </Row>                          
             </div>

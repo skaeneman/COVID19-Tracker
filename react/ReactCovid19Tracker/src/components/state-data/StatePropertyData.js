@@ -13,23 +13,23 @@ export default function StatePropertyData(props) {
             <Card.Text as="span">
             <div>   
               <Row>
-                <Col xs="2" className="text-left">stopped initiating evictions:</Col>
+                <Col xs="6" className="text-left">Stopped initiating evictions:</Col>
                 <Col className="text-left">{ props.propertyData.stopInitiatingEvictions }</Col>  
               </Row>      
               <Row>
-                <Col xs="2" className="text-left">stopped enforcing evictions:</Col>
+                <Col xs="6" className="text-left">Stopped enforcing evictions:</Col>
                 <Col className="text-left">{ props.propertyData.stopEnforcingEvictions }</Col>  
               </Row>    
               <Row>
-                <Col xs="2" className="text-left">grace period or security deposit towards rent:</Col>
+                <Col xs="6" className="text-left">Grace period or security deposit towards rent:</Col>
                 <Col className="text-left">{ props.propertyData.gracePeriodOrSecurityDepositTowardsRent }</Col>  
               </Row>    
               <Row>
-                <Col xs="2" className="text-left">froze utility shut offs:</Col>
+                <Col xs="6" className="text-left">Froze utility shut offs:</Col>
                 <Col className="text-left">{ props.propertyData.frozeUtilityShutOffs }</Col>  
               </Row>   
               <Row>
-                <Col xs="2" className="text-left">froze mortgage payments:</Col>
+                <Col xs="6" className="text-left">Froze mortgage payments:</Col>
                 <Col className="text-left">{ props.propertyData.frozeMortgagePayments }</Col>  
               </Row>                                                                                            
             </div>

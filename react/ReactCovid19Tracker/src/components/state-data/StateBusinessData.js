@@ -10,7 +10,7 @@ export default function StateBusinessData(props) {
             <Card.Text as="span">
             <div>   
             <Row>
-                <Col xs="2" className="text-left">day cares closed on:</Col>
+                <Col xs="6" className="text-left">Day cares closed on:</Col>
                 <Col className="text-left">{ props.businessData.dayCaresClosedOn }</Col>  
               </Row>                                        
             </div>
