@@ -1,26 +1,6 @@
 class FaceMasksController < ApplicationController
   before_action :set_face_mask, only: [:show, :edit, :update, :destroy]
 
-  # # GET /face_masks
-  # # GET /face_masks.json
-  # def index
-  #   @face_masks = FaceMask.all
-  # end
-
-  # # GET /face_masks/1
-  # # GET /face_masks/1.json
-  # def show
-  # end
-
-  # # GET /face_masks/new
-  # def new
-  #   @face_mask = FaceMask.new
-  # end
-
-  # # GET /face_masks/1/edit
-  # def edit
-  # end
-
   # POST /face_masks
   # POST /face_masks.json
   def create
@@ -36,9 +16,6 @@ class FaceMasksController < ApplicationController
       end
     end
   end
-
-
-
 
   # GET 'face_masks/facemasks_by_state' returns API get request for face mask data
   def facemasks_by_state
@@ -76,34 +53,6 @@ class FaceMasksController < ApplicationController
       end
     end    
   end
-
-
-
-
-
-  # # PATCH/PUT /face_masks/1
-  # # PATCH/PUT /face_masks/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @face_mask.update(face_mask_params)
-  #       format.html { redirect_to @face_mask, notice: 'Face mask was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @face_mask }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @face_mask.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
-
-  # # DELETE /face_masks/1
-  # # DELETE /face_masks/1.json
-  # def destroy
-  #   @face_mask.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to face_masks_url, notice: 'Face mask was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
