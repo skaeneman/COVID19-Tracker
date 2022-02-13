@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/bottega-code-school/js-builder",
   "dependencies": {
-    "ajv": "^6.12.2",
+    "ajv": "^6.12.3",
     "aos": "^2.3.4",
     "autoprefixer": "^9.1.0",
     "axios": "0.19.2",
